@@ -1,0 +1,46 @@
+employment:
+create table user(
+	UUID varchar(40);
+	username varchar(40);
+	password varchar(40);
+);
+create table resume(
+	UUID varchar(40);
+	r_name varchar(40);
+	sex varchar(2);
+	age int;
+	phone varchar(11);
+	happy varchar(40);
+	intro varchar(100)
+);
+company(
+	UUID varchar(40);
+	r_name varchar(40);
+	position varchar(40);
+); 
+post(
+	UUID varchar(40);
+	name varchar(40);
+	price int;
+	intro varchar(100)
+);
+zp(
+	c_name varchar(40);
+	p_name varchar(40)
+);
+
+前台功能结构图：
+用户：登陆 注册
+简历：crud
+公司：查看所有公司 
+职位：查看所有职位
+
+后台功能结构图
+
+用户：登陆注册
+简历：crud
+投递简历：申请，撤回
+
+公司：登陆注册
+职位：crud
+处理简历：通过，驳回
