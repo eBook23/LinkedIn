@@ -1,41 +1,55 @@
-employment:
+create database linkedin;
+use linkedin;
 create table user(
 	UUID varchar(40);
 	username varchar(40);
 	password varchar(40);
 );
-create table resume(
+//简历
+create table resume( 
 	UUID varchar(40);
-	r_name varchar(40);
+	rname varchar(40);
 	sex varchar(2);
 	age int;
 	phone varchar(11);
 	happy varchar(40);
+	workyear varchar(20);
+	advantage varchar(100);
+	jobintension varchar(40);
+	jobaddr varchar(40);
 	intro varchar(100)
 );
+//公司
 company(
 	UUID varchar(40);
-	r_name varchar(40);
+	cname varchar(40);
 	position varchar(40);
 ); 
+//职位
 post(
 	UUID varchar(40);
 	name varchar(40);
 	price int;
 	intro varchar(100)
 );
+//cp
 zp(
 	c_name varchar(40);
 	p_name varchar(40)
 );
+//up(
+	u_username varchar(40);
+	p_name varchar(40)
+);
 
-前台功能结构图：
+前台功能结构：
+
 用户：登陆 注册
 简历：crud
 公司：查看所有公司 
 职位：查看所有职位
 
-后台功能结构图
+后台功能结构:
 
 用户：登陆注册
 简历：crud
