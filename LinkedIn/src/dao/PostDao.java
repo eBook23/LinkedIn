@@ -7,19 +7,18 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
-import bean.User;
+import bean.Post;
 
 
-public class UserDao {
+public class PostDao {
 	private String sql;
 	private Connection connection;
 	private Statement stat;
 	private PreparedStatement pstat;
 	
-	public void save(User user){
-		this.setSql("insert into user values('"+user.getUUID()+"','"+user.getUsername()+"','"+user.getPassword()+"');");
+	public void save(Post post){
+		this.setSql("insert into user values('"+post.getUUID()+"','"+post.getName()+"');");
 		try {
 			stat = connection.createStatement();
 			stat.execute(this.getSql());
@@ -31,20 +30,18 @@ public class UserDao {
 		
 	}
 	
-	public User get(String id){
-		this.setSql("select UUID,username,password from user where UUID=?");
-		User user = new User();
+	public Post get(String id){
+		this.setSql("select UUID,name from post where UUID=?");
+		Post post = new Post();
 		try {
 			pstat = connection.prepareStatement(getSql());
 			pstat.setString(1, id);
 			ResultSet rs = pstat.executeQuery();
 			while(rs.next()){
-				user.setUUID(rs.getString("UUID"));
-				user.setUsername(rs.getString("username"));
-				user.setPassword(rs.getString("password"));
+				post.setUUID(rs.getString("UUID"));
+				post.setName(rs.getString("name"));
 				
-		
-				return user;
+				return post;
 				
 			}
 		} catch (SQLException e) {
@@ -56,7 +53,7 @@ public class UserDao {
 	}
 	
 	public void remove(String id){
-		this.setSql("delete from user where UUID=?");
+		this.setSql("delete from post where UUID=?");
 		try {
 			pstat = connection.prepareStatement(getSql());
 			pstat.setString(1, id);
@@ -69,21 +66,20 @@ public class UserDao {
 		}
 	}
 	
-	public List<User> queryAll(){
-		List<User> list = new ArrayList<User>();
-		this.setSql("select UUID,username,password from user");
-		User user;
+	public List<Post> queryAll(){
+		List<Post> list = new ArrayList<Post>();
+		this.setSql("select UUID,name from post");
+		Post post;
 		try {
 			pstat = connection.prepareStatement(getSql());
 			ResultSet rs = pstat.executeQuery();
 			while(rs.next()){
-				user = new User();
-				user.setUUID(rs.getString("UUID"));
-				user.setUsername(rs.getString("username"));
-				user.setPassword(rs.getString("password"));
+				post = new Post();
+				post.setUUID(rs.getString("UUID"));
+				post.setName(rs.getString("name"));
 				
 
-				list.add(user);
+				list.add(post);
 				
 			}
 			return list;
@@ -98,22 +94,21 @@ public class UserDao {
 
 	
 	
-	public List<User> queryAllByName(String sname){
-		List<User> list = new ArrayList<User>();
-		this.setSql("select UUID,username,password from user where username=?");
-		User user;
+	public List<Post> queryAllByName(String sname){
+		List<Post> list = new ArrayList<Post>();
+		this.setSql("select UUID,name from post where name=?");
+		Post post;
 		try {
 			pstat = connection.prepareStatement(getSql());
 			pstat.setString(1, sname);
 			ResultSet rs = pstat.executeQuery();
 			while(rs.next()){
-				user = new User();
-				user.setUUID(rs.getString("UUID"));
-				user.setUsername(rs.getString("username"));
-				user.setPassword(rs.getString("password"));
+				post = new Post();
+				post.setUUID(rs.getString("UUID"));
+				post.setName(rs.getString("name"));
 				
 
-				list.add(user);
+				list.add(post);
 				
 			}
 			return list;
@@ -126,11 +121,11 @@ public class UserDao {
 		return null;
 	}
 	
-	public void removeByUsername(String username){
-		this.setSql("delete from user where username=?");
+	public void removeByUsername(String name){
+		this.setSql("delete from post where name=?");
 		try {
 			pstat = connection.prepareStatement(getSql());
-			pstat.setString(1, username);
+			pstat.setString(1, name);
 			pstat.execute();
 			
 		} catch (SQLException e) {
@@ -141,10 +136,10 @@ public class UserDao {
 		
 	}
 	
-	public void save(List<User> list){
+	public void save(List<Post> list){
 		
-		for(User user:list){
-			this.setSql("insert into user values('"+user.getUUID()+"','"+user.getUsername()+"','"+user.getPassword()+"');");
+		for(Post post:list){
+			this.setSql("insert into user values('"+post.getUUID()+"','"+post.getName()+"');");
 			try {
 				this.pstat = this.connection.prepareStatement(this.getSql());
 				this.pstat.addBatch();

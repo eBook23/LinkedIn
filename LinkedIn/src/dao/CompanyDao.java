@@ -7,19 +7,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
-import bean.User;
+import bean.Company;
 
-
-public class UserDao {
+public class CompanyDao {
 	private String sql;
 	private Connection connection;
 	private Statement stat;
 	private PreparedStatement pstat;
 	
-	public void save(User user){
-		this.setSql("insert into user values('"+user.getUUID()+"','"+user.getUsername()+"','"+user.getPassword()+"');");
+	public void save(Company company){
+		this.setSql("insert into user values('"+company.getUUID()+"','"+company.getCname()+"','"+company.getPosition()+"');");
 		try {
 			stat = connection.createStatement();
 			stat.execute(this.getSql());
@@ -31,20 +29,20 @@ public class UserDao {
 		
 	}
 	
-	public User get(String id){
-		this.setSql("select UUID,username,password from user where UUID=?");
-		User user = new User();
+	public Company get(String id){
+		this.setSql("select UUID,cname,position from company where UUID=?");
+		Company company = new Company();
 		try {
 			pstat = connection.prepareStatement(getSql());
 			pstat.setString(1, id);
 			ResultSet rs = pstat.executeQuery();
 			while(rs.next()){
-				user.setUUID(rs.getString("UUID"));
-				user.setUsername(rs.getString("username"));
-				user.setPassword(rs.getString("password"));
+				company.setUUID(rs.getString("UUID"));
+				company.setCname(rs.getString("cname"));
+				company.setPosition(rs.getString("position"));
 				
 		
-				return user;
+				return company;
 				
 			}
 		} catch (SQLException e) {
@@ -56,7 +54,7 @@ public class UserDao {
 	}
 	
 	public void remove(String id){
-		this.setSql("delete from user where UUID=?");
+		this.setSql("delete from company where UUID=?");
 		try {
 			pstat = connection.prepareStatement(getSql());
 			pstat.setString(1, id);
@@ -69,21 +67,21 @@ public class UserDao {
 		}
 	}
 	
-	public List<User> queryAll(){
-		List<User> list = new ArrayList<User>();
-		this.setSql("select UUID,username,password from user");
-		User user;
+	public List<Company> queryAll(){
+		List<Company> list = new ArrayList<Company>();
+		this.setSql("select UUID,cname,position from company");
+		Company company;
 		try {
 			pstat = connection.prepareStatement(getSql());
 			ResultSet rs = pstat.executeQuery();
 			while(rs.next()){
-				user = new User();
-				user.setUUID(rs.getString("UUID"));
-				user.setUsername(rs.getString("username"));
-				user.setPassword(rs.getString("password"));
+				company = new Company();
+				company.setUUID(rs.getString("UUID"));
+				company.setCname(rs.getString("cname"));
+				company.setPosition(rs.getString("position"));
 				
 
-				list.add(user);
+				list.add(company);
 				
 			}
 			return list;
@@ -98,22 +96,22 @@ public class UserDao {
 
 	
 	
-	public List<User> queryAllByName(String sname){
-		List<User> list = new ArrayList<User>();
-		this.setSql("select UUID,username,password from user where username=?");
-		User user;
+	public List<Company> queryAllByName(String cname){
+		List<Company> list = new ArrayList<Company>();
+		this.setSql("select UUID,cname,position from company where cname=?");
+		Company company;
 		try {
 			pstat = connection.prepareStatement(getSql());
-			pstat.setString(1, sname);
+			pstat.setString(1, cname);
 			ResultSet rs = pstat.executeQuery();
 			while(rs.next()){
-				user = new User();
-				user.setUUID(rs.getString("UUID"));
-				user.setUsername(rs.getString("username"));
-				user.setPassword(rs.getString("password"));
+				company = new Company();
+				company.setUUID(rs.getString("UUID"));
+				company.setCname(rs.getString("cname"));
+				company.setPosition(rs.getString("position"));
 				
 
-				list.add(user);
+				list.add(company);
 				
 			}
 			return list;
@@ -126,11 +124,11 @@ public class UserDao {
 		return null;
 	}
 	
-	public void removeByUsername(String username){
-		this.setSql("delete from user where username=?");
+	public void removeByUsername(String cname){
+		this.setSql("delete from company where cname=?");
 		try {
 			pstat = connection.prepareStatement(getSql());
-			pstat.setString(1, username);
+			pstat.setString(1, cname);
 			pstat.execute();
 			
 		} catch (SQLException e) {
@@ -141,10 +139,10 @@ public class UserDao {
 		
 	}
 	
-	public void save(List<User> list){
+	public void save(List<Company> list){
 		
-		for(User user:list){
-			this.setSql("insert into user values('"+user.getUUID()+"','"+user.getUsername()+"','"+user.getPassword()+"');");
+		for(Company company:list){
+			this.setSql("insert into user values('"+company.getUUID()+"','"+company.getCname()+"','"+company.getPosition()+"');");
 			try {
 				this.pstat = this.connection.prepareStatement(this.getSql());
 				this.pstat.addBatch();
@@ -199,3 +197,4 @@ public class UserDao {
 	
 	
 }
+
