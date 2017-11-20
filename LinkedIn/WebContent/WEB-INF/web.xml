@@ -9,4 +9,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>LoginDispatcher</display-name>
+    <servlet-name>LoginDispatcher</servlet-name>
+    <servlet-class>controller.LoginDispatcher</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginDispatcher</servlet-name>
+    <url-pattern>/LoginDispatcher</url-pattern>
+  </servlet-mapping>
 </web-app>

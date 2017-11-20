@@ -30,7 +30,7 @@ public class UserServiceTest {
 	
 	
 	/**
-	 * 1.Ìí¼ÓÓÃ»§
+	 * 1.ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
 	 * Test method for {@link service.UserService#add(bean.User)}.
 	 */
 	@Test
@@ -45,7 +45,7 @@ public class UserServiceTest {
 	}
 
 	/**
-	 * 2.Í¨¹ýIdÉ¾³ýÓÃ»§
+	 * 2.Í¨ï¿½ï¿½IdÉ¾ï¿½ï¿½ï¿½Ã»ï¿½
 	 * Test method for {@link service.UserService#remove(java.lang.String)}.
 	 */
 	@Test
@@ -55,7 +55,7 @@ public class UserServiceTest {
 
 	
 	/**
-	 * 3.Í¨¹ýÓÃ»§ÃûÉ¾³ýÓÃ»§
+	 * 3.Í¨ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½Ã»ï¿½
 	 * Test method for {@link service.UserService#remove(java.lang.String)}.
 	 */
 	@Test
@@ -64,7 +64,7 @@ public class UserServiceTest {
 	}
 
 	/**
-	 * 4.Í¨¹ýId²éÑ¯ÓÃ»§
+	 * 4.Í¨ï¿½ï¿½Idï¿½ï¿½Ñ¯ï¿½Ã»ï¿½
 	 * Test method for {@link service.UserService#get(java.lang.String)}.
 	 */
 	@Test
@@ -74,19 +74,17 @@ public class UserServiceTest {
 	}
 	
 	/**
-	 * 5.Í¨¹ýÓÃ»§Ãû²éÑ¯ÓÃ»§
+	 * 5.Í¨ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½Ã»ï¿½
 	 * Test method for {@link service.UserService#queryAllByName(java.lang.String)}.
 	 */
 	@Test
-	public void testQueryAllByName() {
-		List<User> list = userService.queryAllByName("blice");
-		for(User u:list){
-			System.out.println(u);
-		}
+	public void testgetByName() {
+		User u = userService.getByName("blice");
+		System.out.println(u);
 	}
 	
 	/**
-	 * 6.²éÑ¯È«²¿
+	 * 6.ï¿½ï¿½Ñ¯È«ï¿½ï¿½
 	 * Test method for {@link service.UserService#queryAll()}.
 	 */
 	@Test
@@ -100,7 +98,7 @@ public class UserServiceTest {
 	}
 
 	/**
-	 * 7.¸üÐÂÓÃ»§
+	 * 7.ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
 	 * Test method for {@link service.UserService#update(bean.User)}.
 	 */
 	@Test
