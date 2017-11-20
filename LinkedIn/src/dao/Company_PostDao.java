@@ -89,14 +89,10 @@ public class Company_PostDao {
 			return list;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-			
+			e.printStackTrace();	
 		}
-		
 		return null;
 	}
-
-	
 	
 	public List<Company_post> queryAllByPostId(String pid){
 		List<Company_post> list = new ArrayList<Company_post>();

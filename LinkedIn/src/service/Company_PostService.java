@@ -25,8 +25,8 @@ public class Company_PostService {
 	}
 	
 	
-	public void add(Company_post company){
-		cpDao.save(company);
+	public void add(Company_post cpost){
+		cpDao.save(cpost);
 		
 	}
 	
@@ -34,8 +34,8 @@ public class Company_PostService {
 		cpDao.remove(id);
 	
 	}
-	public void removeByCompanyName(String cname){
-		cpDao.removeByCompanyId(cname);
+	public void removeByCompanyId(String cid){
+		cpDao.removeByCompanyId(cid);
 	}
 	
 	public Company_post get(String id){
@@ -43,13 +43,13 @@ public class Company_PostService {
 	
 	}
 	
-	public void update(Company_post company){
+	public void update(Company_post cpost){
 		
-		cpDao.updateCompany_post(company);
+		cpDao.updateCompany_post(cpost);
 	}
 	
-	public List<Company_post> queryAllByName(String name){
-		return cpDao.queryAllByPostId(name);
+	public List<Company_post> queryAllByPostId(String pid){
+		return cpDao.queryAllByPostId(pid);
 		
 	}
 }

@@ -29,8 +29,6 @@ public class UserServiceTest {
 	}
 	
 	
-
-
 	/**
 	 * 1.ÃÌº””√ªß
 	 * Test method for {@link service.UserService#add(bean.User)}.
@@ -40,7 +38,7 @@ public class UserServiceTest {
 		User user = new User();
 		UUID a;
 		a=UUID.randomUUID();
-		user.setUUID("1002");
+		user.setUUID("1003");
 		user.setUsername("blice");
 		user.setPassword("123456");
 		userService.add(user);

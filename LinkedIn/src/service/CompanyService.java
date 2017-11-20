@@ -20,7 +20,6 @@ public class CompanyService {
 
 	public List<Company> queryAll(){
 		return companyDao.queryAll();
-		
 	}
 	
 	
@@ -46,7 +45,7 @@ public class CompanyService {
 		
 		companyDao.updateCompany(company);
 	}
-	
+	//通过姓名查找用户
 	public List<Company> queryAllByName(String name){
 		return companyDao.queryAllByName(name);
 		
