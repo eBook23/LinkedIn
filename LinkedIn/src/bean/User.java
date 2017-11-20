@@ -19,6 +19,11 @@ public class User {
 	public String getPassword() {
 		return password;
 	}
+	@Override
+	public String toString() {
+		return "User [UUID=" + UUID + ", username=" + username + ", password="
+				+ password + "]";
+	}
 	public void setPassword(String password) {
 		this.password = password;
 	}
