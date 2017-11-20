@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bean.Company;
+import bean.Post;
 
 public class CompanyDao {
 	private String sql;
@@ -17,7 +18,7 @@ public class CompanyDao {
 	private PreparedStatement pstat;
 	
 	public void save(Company company){
-		this.setSql("insert into user values('"+company.getUUID()+"','"+company.getCname()+"','"+company.getPosition()+"');");
+		this.setSql("insert into company values('"+company.getUUID()+"','"+company.getCname()+"','"+company.getPosition()+"');");
 		try {
 			stat = connection.createStatement();
 			stat.execute(this.getSql());
@@ -124,7 +125,7 @@ public class CompanyDao {
 		return null;
 	}
 	
-	public void removeByUsername(String cname){
+	public void removeByCompanyname(String cname){
 		this.setSql("delete from company where cname=?");
 		try {
 			pstat = connection.prepareStatement(getSql());
@@ -142,7 +143,7 @@ public class CompanyDao {
 	public void save(List<Company> list){
 		
 		for(Company company:list){
-			this.setSql("insert into user values('"+company.getUUID()+"','"+company.getCname()+"','"+company.getPosition()+"');");
+			this.setSql("insert into company values('"+company.getUUID()+"','"+company.getCname()+"','"+company.getPosition()+"');");
 			try {
 				this.pstat = this.connection.prepareStatement(this.getSql());
 				this.pstat.addBatch();
@@ -159,6 +160,26 @@ public class CompanyDao {
 			e.printStackTrace();
 		}
 		
+	}
+	public void updateCompany(Company company){
+		this.setSql("delete from company where UUID=?");
+		try {
+			pstat = connection.prepareStatement(getSql());
+			pstat.setString(1, company.getUUID());
+			pstat.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		this.setSql("insert into company values('"+company.getUUID()+"','"+company.getCname()+"','"+company.getPosition()+"');");
+		try {
+			stat = connection.createStatement();
+			stat.execute(this.getSql());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	

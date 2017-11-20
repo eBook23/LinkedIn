@@ -35,6 +35,10 @@ public class UserService {
 	
 	}
 	
+	public void removeByUserName(String username){
+		userDao.removeByUsername(username);
+	}
+	
 	public User get(String id){
 		return userDao.get(id);
 	
@@ -42,7 +46,7 @@ public class UserService {
 	
 	public void update(User user){
 		
-		//DataBase.updateStudent(student);
+		userDao.updateUser(user);
 	}
 	
 	public List<User> queryAllByName(String name){

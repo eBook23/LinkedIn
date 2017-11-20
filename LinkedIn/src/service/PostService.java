@@ -33,6 +33,9 @@ public class PostService {
 		postDao.remove(id);
 	
 	}
+	public void removeByPostName(String name){
+		postDao.removeByPostname(name);
+	}
 	
 	public Post get(String id){
 		return postDao.get(id);
@@ -41,7 +44,7 @@ public class PostService {
 	
 	public void update(Post post){
 		
-		//DataBase.updateStudent(student);
+		postDao.updatePost(post);
 	}
 	
 	public List<Post> queryAllByName(String name){

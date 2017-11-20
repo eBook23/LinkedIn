@@ -33,6 +33,9 @@ public class ResumeService {
 		resumeDao.remove(id);
 	
 	}
+	public void removeByResumeName(String rname){
+		resumeDao.removeByResumename(rname);
+	}
 	
 	public Resume get(String id){
 		return resumeDao.get(id);
@@ -41,7 +44,7 @@ public class ResumeService {
 	
 	public void update(Resume resume){
 		
-		//DataBase.updateStudent(student);
+		resumeDao.updateResume(resume);
 	}
 	
 	public List<Resume> queryAllByName(String rname){

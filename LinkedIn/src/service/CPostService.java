@@ -3,16 +3,15 @@ package service;
 import java.sql.Connection;
 import java.util.List;
 
-import bean.Company;
-import dao.CompanyDao;
+import dao.CPostDao;
 import tools.DbUtil;
 
-public class CompanyService {
+public class CPostService {
 	Connection connection;
-	CompanyDao companyDao;
+	CPostDao CpDao;
 
 	
-	public CompanyService(){
+	public CPostService(){
 		connection = DbUtil.getInstance().getConnection();
 		companyDao = new CompanyDao();
 		companyDao.setConnection(connection);

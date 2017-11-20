@@ -39,15 +39,15 @@ create table company_post(
 	post_id varchar(40),
 	price int,
 	intro varchar(100),
-	primary key(company_id,post_post),
-	foreign key(company_id) references user(UUID),
+	primary key(company_id,post_id),
+	foreign key(company_id) references company(UUID),
 	foreign key(post_id) references post(UUID)
 );
 //up
 create table user_post(
 	user_id varchar(40),
 	post_id varchar(40),
-	primary key(user_id,user_post),
+	primary key(user_id,post_id),
 	foreign key(user_id) references user(UUID),
 	foreign key(post_id) references post(UUID)
 );

@@ -41,7 +41,6 @@ public class testuserservice {
 	 */
 	@Test
 	public void testQueryAll() {
-		fail("Not yet implemented");
 		UserService userService = new UserService();
 		List<User> list = userService.queryAll();
 		for(User user:list){

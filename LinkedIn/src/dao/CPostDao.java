@@ -7,19 +7,18 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
-import bean.User;
+import bean.Company_post;
 
 
-public class UserDao {
+public class CPostDao {
 	private String sql;
 	private Connection connection;
 	private Statement stat;
 	private PreparedStatement pstat;
 	
-	public void save(User user){
-		this.setSql("insert into user values('"+user.getUUID()+"','"+user.getUsername()+"','"+user.getPassword()+"');");
+	public void save(Company_post cpost){
+		this.setSql("insert into company_post values('"+cpost.getCompany_id()+"','"+cpost.getPost_id()+"',"+cpost.getPrice()+",'"+cpost.getIntro()+"');");
 		try {
 			stat = connection.createStatement();
 			stat.execute(this.getSql());
@@ -31,18 +30,20 @@ public class UserDao {
 		
 	}
 	
-	public User get(String id){
-		this.setSql("select UUID,username,password from user where UUID=?");
-		User user = new User();
+	public Company_post get(String cid){
+		this.setSql("select company_id,post_id,price,intro from company_post where company_id=?");
+		Company_post cp = new Company_post();
 		try {
 			pstat = connection.prepareStatement(getSql());
-			pstat.setString(1, id);
+			pstat.setString(1, cid);
 			ResultSet rs = pstat.executeQuery();
 			while(rs.next()){
-				user.setUUID(rs.getString("UUID"));
-				user.setUsername(rs.getString("username"));
-				user.setPassword(rs.getString("password"));
-				return user;
+				cp.setCompany_id(rs.getString("company_id"));
+				cp.setPost_id(rs.getString("post_id"));
+				cp.setPrice(rs.getInt("price"));
+				cp.setIntro(rs.getString("intro"));
+				
+				return cp;
 				
 			}
 		} catch (SQLException e) {
@@ -53,12 +54,13 @@ public class UserDao {
 		return null;
 	}
 	
-	public void remove(String id){
-		this.setSql("delete from user where UUID=?");
+	public void remove(String pid){
+		this.setSql("delete from company_post where post_id=?");
 		try {
 			pstat = connection.prepareStatement(getSql());
-			pstat.setString(1, id);
+			pstat.setString(1, pid);
 			pstat.execute();
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -66,21 +68,22 @@ public class UserDao {
 		}
 	}
 	
-	public List<User> queryAll(){
-		List<User> list = new ArrayList<User>();
-		this.setSql("select UUID,username,password from user");
-		User user;
+	public List<Company_post> queryAll(){
+		List<Company_post> list = new ArrayList<Company_post>();
+		this.setSql("select company_id,post_id,price,intro from company_post");
+		Company_post cp;
 		try {
 			pstat = connection.prepareStatement(getSql());
 			ResultSet rs = pstat.executeQuery();
 			while(rs.next()){
-				user = new User();
-				user.setUUID(rs.getString("UUID"));
-				user.setUsername(rs.getString("username"));
-				user.setPassword(rs.getString("password"));
+				cp = new Company_post();
+				cp.setCompany_id(rs.getString("company_id"));
+				cp.setPost_id(rs.getString("post_id"));
+				cp.setPrice(rs.getInt("price"));
+				cp.setIntro(rs.getString("intro"));
 				
 
-				list.add(user);
+				list.add(cp);
 				
 			}
 			return list;
@@ -95,22 +98,23 @@ public class UserDao {
 
 	
 	
-	public List<User> queryAllByName(String sname){
-		List<User> list = new ArrayList<User>();
-		this.setSql("select UUID,username,password from user where username=?");
-		User user;
+	public List<Company_post> queryAllByPostId(String pid){
+		List<Company_post> list = new ArrayList<Company_post>();
+		this.setSql("select company_id,post_id,price,intro from company_post where post_id=?");
+		Company_post cp;
 		try {
 			pstat = connection.prepareStatement(getSql());
-			pstat.setString(1, sname);
+			pstat.setString(1, pid);
 			ResultSet rs = pstat.executeQuery();
 			while(rs.next()){
-				user = new User();
-				user.setUUID(rs.getString("UUID"));
-				user.setUsername(rs.getString("username"));
-				user.setPassword(rs.getString("password"));
+				cp = new Company_post();
+				cp.setCompany_id(rs.getString("company_id"));
+				cp.setPost_id(rs.getString("post_id"));
+				cp.setPrice(rs.getInt("price"));
+				cp.setIntro(rs.getString("intro"));
 				
 
-				list.add(user);
+				list.add(cp);
 				
 			}
 			return list;
@@ -123,11 +127,11 @@ public class UserDao {
 		return null;
 	}
 	
-	public void removeByUsername(String username){
-		this.setSql("delete from user where username=?");
+	public void removeByCompanyId(String cid){
+		this.setSql("delete from company_post where company_id=?");
 		try {
 			pstat = connection.prepareStatement(getSql());
-			pstat.setString(1, username);
+			pstat.setString(1, cid);
 			pstat.execute();
 			
 		} catch (SQLException e) {
@@ -135,40 +139,21 @@ public class UserDao {
 			e.printStackTrace();
 			
 		}
+		
 	}
 	
-	public void save(List<User> list){
-		for(User user:list){
-			this.setSql("insert into user values('"+user.getUUID()+"','"+user.getUsername()+"','"+user.getPassword()+"');");
-			try {
-				this.pstat = this.connection.prepareStatement(this.getSql());
-				this.pstat.addBatch();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-		}
-		try {
-			this.pstat.executeBatch();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
-	public void updateUser(User user){
-		this.setSql("delete from user where UUID=?");
+	public void updateCompany_post(Company_post cpost){
+		this.setSql("delete from company_post where company_id=?");
 		try {
 			pstat = connection.prepareStatement(getSql());
-			pstat.setString(1, user.getUUID());
+			pstat.setString(1, cpost.getCompany_id());
 			pstat.execute();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		this.setSql("insert into user values('"+user.getUUID()+"','"+user.getUsername()+"','"+user.getPassword()+"');");
+		this.setSql("insert into company_post values('"+cpost.getCompany_id()+"','"+cpost.getPost_id()+"',"+cpost.getPrice()+",'"+cpost.getIntro()+"');");
 		try {
 			stat = connection.createStatement();
 			stat.execute(this.getSql());
@@ -177,6 +162,7 @@ public class UserDao {
 			e.printStackTrace();
 		}
 	}
+	
 	
 	
 	public String getSql() {
@@ -213,3 +199,4 @@ public class UserDao {
 	
 	
 }
+

@@ -18,7 +18,7 @@ public class PostDao {
 	private PreparedStatement pstat;
 	
 	public void save(Post post){
-		this.setSql("insert into user values('"+post.getUUID()+"','"+post.getName()+"');");
+		this.setSql("insert into post values('"+post.getUUID()+"','"+post.getName()+"');");
 		try {
 			stat = connection.createStatement();
 			stat.execute(this.getSql());
@@ -121,7 +121,7 @@ public class PostDao {
 		return null;
 	}
 	
-	public void removeByUsername(String name){
+	public void removeByPostname(String name){
 		this.setSql("delete from post where name=?");
 		try {
 			pstat = connection.prepareStatement(getSql());
@@ -139,7 +139,7 @@ public class PostDao {
 	public void save(List<Post> list){
 		
 		for(Post post:list){
-			this.setSql("insert into user values('"+post.getUUID()+"','"+post.getName()+"');");
+			this.setSql("insert into post values('"+post.getUUID()+"','"+post.getName()+"');");
 			try {
 				this.pstat = this.connection.prepareStatement(this.getSql());
 				this.pstat.addBatch();
@@ -157,7 +157,26 @@ public class PostDao {
 		}
 		
 	}
-	
+	public void updatePost(Post post){
+		this.setSql("delete from post where UUID=?");
+		try {
+			pstat = connection.prepareStatement(getSql());
+			pstat.setString(1, post.getUUID());
+			pstat.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		this.setSql("insert into post values('"+post.getUUID()+"','"+post.getName()+"');");
+		try {
+			stat = connection.createStatement();
+			stat.execute(this.getSql());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	
 	public String getSql() {
