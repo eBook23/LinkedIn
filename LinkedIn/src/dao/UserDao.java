@@ -95,7 +95,7 @@ public class UserDao {
 
 	
 	
-	public User getByName(String sname){
+	public List<User> queryAllByName(String sname){
 		List<User> list = new ArrayList<User>();
 		this.setSql("select UUID,username,password from user where username=?");
 		User user;
@@ -103,11 +103,17 @@ public class UserDao {
 			pstat = connection.prepareStatement(getSql());
 			pstat.setString(1, sname);
 			ResultSet rs = pstat.executeQuery();
-			user = new User();
-			user.setUUID(rs.getString("UUID"));
-			user.setUsername(rs.getString("username"));
-			user.setPassword(rs.getString("password"));
-			return user;
+			while(rs.next()){
+				user = new User();
+				user.setUUID(rs.getString("UUID"));
+				user.setUsername(rs.getString("username"));
+				user.setPassword(rs.getString("password"));
+				
+
+				list.add(user);
+				
+			}
+			return list;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

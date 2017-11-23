@@ -30,7 +30,7 @@ public class UserServiceTest {
 	
 	
 	/**
-	 * 1.ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
+	 * 1.Ìí¼ÓÓÃ»§
 	 * Test method for {@link service.UserService#add(bean.User)}.
 	 */
 	@Test
@@ -45,7 +45,7 @@ public class UserServiceTest {
 	}
 
 	/**
-	 * 2.Í¨ï¿½ï¿½IdÉ¾ï¿½ï¿½ï¿½Ã»ï¿½
+	 * 2.Í¨¹ýIdÉ¾³ýÓÃ»§
 	 * Test method for {@link service.UserService#remove(java.lang.String)}.
 	 */
 	@Test
@@ -55,7 +55,7 @@ public class UserServiceTest {
 
 	
 	/**
-	 * 3.Í¨ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½Ã»ï¿½
+	 * 3.Í¨¹ýÓÃ»§ÃûÉ¾³ýÓÃ»§
 	 * Test method for {@link service.UserService#remove(java.lang.String)}.
 	 */
 	@Test
@@ -64,7 +64,7 @@ public class UserServiceTest {
 	}
 
 	/**
-	 * 4.Í¨ï¿½ï¿½Idï¿½ï¿½Ñ¯ï¿½Ã»ï¿½
+	 * 4.Í¨¹ýId²éÑ¯ÓÃ»§
 	 * Test method for {@link service.UserService#get(java.lang.String)}.
 	 */
 	@Test
@@ -74,31 +74,33 @@ public class UserServiceTest {
 	}
 	
 	/**
-	 * 5.Í¨ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½Ã»ï¿½
+	 * 5.Í¨¹ýÓÃ»§Ãû²éÑ¯ÓÃ»§
 	 * Test method for {@link service.UserService#queryAllByName(java.lang.String)}.
 	 */
 	@Test
-	public void testgetByName() {
-		User u = userService.getByName("");
-		System.out.println(u);
+	public void testQueryAllByName() {
+		List<User> list = userService.queryAllByName("blice");
+		for(User u:list){
+			System.out.println(u);
+		}
 	}
 	
 	/**
-	 * 6.ï¿½ï¿½Ñ¯È«ï¿½ï¿½
+	 * 6.²éÑ¯È«²¿
 	 * Test method for {@link service.UserService#queryAll()}.
 	 */
 	@Test
 	public void testQueryAll() {
 		UserService userService = new UserService();
 		List<User> list = userService.queryAll();
-		for(User user0:list){
-			System.out.println(list);
+		for(User user:list){
+			System.out.println(user);
 			
 		}
 	}
 
 	/**
-	 * 7.ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
+	 * 7.¸üÐÂÓÃ»§
 	 * Test method for {@link service.UserService#update(bean.User)}.
 	 */
 	@Test

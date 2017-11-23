@@ -23,7 +23,7 @@ public class UserService {
 	
 	
 	/**
-	 * 1.ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
+	 * 1.Ìí¼ÓÓÃ»§
 	 * @param user
 	 */
 	public void add(User user){
@@ -32,7 +32,7 @@ public class UserService {
 	}
 	
 	/**
-	 * 2.Í¨ï¿½ï¿½IdÉ¾ï¿½ï¿½ï¿½Ã»ï¿½
+	 * 2.Í¨¹ýIdÉ¾³ýÓÃ»§
 	 * @param id
 	 */
 	public void remove(String id){
@@ -41,7 +41,7 @@ public class UserService {
 	}
 	
 	/**
-	 * 3.Í¨ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½Ã»ï¿½
+	 * 3.Í¨¹ýÓÃ»§ÃûÉ¾³ýÓÃ»§
 	 * @param username
 	 */
 	public void removeByUserName(String username){
@@ -49,7 +49,7 @@ public class UserService {
 	}
 	
 	/**
-	 * 4.Í¨ï¿½ï¿½Idï¿½ï¿½Ñ¯ï¿½Ã»ï¿½
+	 * 4.Í¨¹ýId²éÑ¯ÓÃ»§
 	 * @param id
 	 * @return
 	 */
@@ -59,17 +59,17 @@ public class UserService {
 	}
 	
 	/**
-	 * 5.Í¨ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½Ã»ï¿½
+	 * 5.Í¨¹ýÓÃ»§Ãû²éÑ¯ÓÃ»§
 	 * @param name
 	 * @return
 	 */
-	public User getByName(String name){
-		return userDao.getByName(name);
+	public List<User> queryAllByName(String name){
+		return userDao.queryAllByName(name);
 		
 	}
 	
 	/**
-	 * 6.ï¿½ï¿½Ñ¯È«ï¿½ï¿½
+	 * 6.²éÑ¯È«²¿
 	 * @return
 	 */
 	public List<User> queryAll(){
@@ -78,7 +78,7 @@ public class UserService {
 	}
 	
 	/**
-	 * 7.ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
+	 * 7.¸üÐÂÓÃ»§
 	 * @param user
 	 */
 	public void update(User user){

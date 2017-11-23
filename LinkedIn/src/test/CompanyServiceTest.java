@@ -36,7 +36,7 @@ public class CompanyServiceTest {
 	public void testCompanyService() {
 		fail("Not yet implemented");
 	}
-	//²éÕÒËùÓÐ¹«Ë¾
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¹ï¿½Ë¾
 	@Test
 	public void testQueryAll() {
 		List<Company> list= companyService.queryAll();
@@ -45,7 +45,7 @@ public class CompanyServiceTest {
 		}
 	}
 
-	//Ìí¼Ó¹«Ë¾
+	//ï¿½ï¿½Ó¹ï¿½Ë¾
 	@Test
 	public void testAdd() {
 		Company company = new Company();
@@ -54,30 +54,30 @@ public class CompanyServiceTest {
 		company.setPosition("china zhongxin ");
 		companyService.add(company);
 	}
-	//Í¨¹ýIDÉ¾³ý¹«Ë¾
+	//Í¨ï¿½ï¿½IDÉ¾ï¿½ï¿½ï¿½ï¿½Ë¾
 	@Test
 	public void testRemove() {
 		companyService.remove("1234");
 	}
-	//Í¨¹ý¹«Ë¾ÃûÉ¾³ý¹«Ë¾
+	//Í¨ï¿½ï¿½ï¿½ï¿½Ë¾ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½Ë¾
 	@Test
 	public void testRemoveByCompanyName() {
-		companyService.removeByCompanyName("shanghai");
+		companyService.removeByCompanyName("bailangtao");
 	}
-	//Í¨¹ýID²éÑ¯ÐÅÏ¢
+	//Í¨ï¿½ï¿½IDï¿½ï¿½Ñ¯ï¿½ï¿½Ï¢
 	@Test
 	public void testGet() {
 		Company c= companyService.get("1234");
 		System.out.println("cname:  "+c.getCname());
 	}
-	//¸üÐÂ¹«Ë¾
+	//ï¿½ï¿½ï¿½Â¹ï¿½Ë¾
 	@Test
 	public void testUpdate() {
 		Company c =companyService.get("1234");
 		c.setCname("shengzheng");
 		companyService.update(c);
 	}
-	//Í¨¹ýÃû³Æ²éÕÒ¹«Ë¾
+	//Í¨ï¿½ï¿½ï¿½ï¿½ï¿½Æ²ï¿½ï¿½Ò¹ï¿½Ë¾
 	@Test
 	public void testQueryAllByName() {
 		List<Company> list= companyService.queryAllByName("shanghai");

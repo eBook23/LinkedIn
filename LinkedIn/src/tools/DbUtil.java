@@ -23,7 +23,7 @@ public class DbUtil {
 	public static DbUtil getInstance(){
 		return instance;
 	}
-	// jdbc:mysql://localhost:3307/student_manage
+	// jdbc:mysql://localhost:3306/linkedin
 	public Connection getConnection(){
 		//jdbc:mysql://47.95.204.223:3306/linkedin
 		String url="jdbc:mysql://47.95.204.223:3306/linkedin";
