@@ -19,4 +19,14 @@
     <servlet-name>LoginDispatcher</servlet-name>
     <url-pattern>/LoginDispatcher</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SecurityDispatcher</display-name>
+    <servlet-name>SecurityDispatcher</servlet-name>
+    <servlet-class>controller.SecurityDispatcher</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SecurityDispatcher</servlet-name>
+    <url-pattern>/Security/*</url-pattern>
+  </servlet-mapping>
 </web-app>

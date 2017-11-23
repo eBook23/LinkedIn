@@ -79,7 +79,7 @@ public class UserServiceTest {
 	 */
 	@Test
 	public void testgetByName() {
-		User u = userService.getByName("blice");
+		User u = userService.getByName("");
 		System.out.println(u);
 	}
 	
@@ -91,8 +91,8 @@ public class UserServiceTest {
 	public void testQueryAll() {
 		UserService userService = new UserService();
 		List<User> list = userService.queryAll();
-		for(User user:list){
-			System.out.println(user);
+		for(User user0:list){
+			System.out.println(list);
 			
 		}
 	}
