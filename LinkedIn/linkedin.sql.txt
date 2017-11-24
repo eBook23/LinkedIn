@@ -1,0 +1,76 @@
+create database linkedin;
+use linkedin;
+//用户
+create table user(
+	UUID varchar(40) primary key,
+	username varchar(40) not null,
+	password varchar(40)not null,
+	sex varchar(10),
+	phone varchar(20),
+	email varchar(40),
+	time varchar(20),
+	power int
+);
+
+//简历
+create table resume( 
+	UUID varchar(40) primary key,
+	user_id varchar(40),
+	rname varchar(40),
+	sex varchar(2),
+	age int,
+	phone varchar(11),
+	happy varchar(40),
+	workyear varchar(20),
+	advantage varchar(100),
+	jobintension varchar(40),
+	jobaddr varchar(40),
+	intro varchar(100),
+	foreign key(user_id) references user(UUID)
+);
+//公司
+create table company(
+	UUID varchar(40) primary key,
+	cname varchar(40),
+	position varchar(40)
+); 
+//职位
+create table post(
+	UUID varchar(40) primary key,
+	name varchar(40)
+);
+//cp
+create table company_post(
+	company_id varchar(40),
+	post_id varchar(40),
+	price int,
+	intro varchar(100),
+	primary key(company_id,post_id),
+	foreign key(company_id) references company(UUID),
+	foreign key(post_id) references post(UUID)
+);
+//up
+create table user_post(
+	user_id varchar(40),
+	post_id varchar(40),
+	primary key(user_id,post_id),
+	foreign key(user_id) references user(UUID),
+	foreign key(post_id) references post(UUID)
+);
+
+前台功能结构：
+
+用户：登陆 注册
+简历：crud
+公司：查看所有公司 
+职位：查看所有职位
+
+后台功能结构:
+
+用户：登陆注册
+简历：crud
+投递简历：申请，撤回
+
+公司：登陆注册
+职位：crud
+处理简历：通过，驳回

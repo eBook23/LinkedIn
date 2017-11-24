@@ -14,12 +14,28 @@ import bean.User;
 
 public class UserDao {
 	private String sql;
+	public String getSql() {
+		return sql;
+	}
+
+	public void setSql(String sql) {
+		this.sql = sql;
+	}
+
+	public Connection getConnection() {
+		return connection;
+	}
+
+	public void setConnection(Connection connection) {
+		this.connection = connection;
+	}
+
 	private Connection connection;
 	private Statement stat;
 	private PreparedStatement pstat;
 	
 	public void save(User user){
-		this.setSql("insert into user values('"+user.getUUID()+"','"+user.getUsername()+"','"+user.getPassword()+"');");
+		this.setSql("insert into user values('"+user.getUUID()+"','"+user.getUsername()+"','"+user.getPassword()+"','"+user.getSex()+"','"+user.getPhone()+"','"+user.getEmail()+"','"+user.getTime()+"',"+user.getPower()+");");
 		try {
 			stat = connection.createStatement();
 			stat.execute(this.getSql());
@@ -32,19 +48,22 @@ public class UserDao {
 	}
 	
 	public User get(String id){
-		this.setSql("select UUID,username,password from user where UUID=?");
+		this.setSql("select* from user where UUID=?");
 		User user = new User();
 		try {
 			pstat = connection.prepareStatement(getSql());
 			pstat.setString(1, id);
 			ResultSet rs = pstat.executeQuery();
-			while(rs.next()){
-				user.setUUID(rs.getString("UUID"));
-				user.setUsername(rs.getString("username"));
-				user.setPassword(rs.getString("password"));
-				return user;
-				
-			}
+			rs.next();
+			user.setUUID(rs.getString("UUID"));
+			user.setUsername(rs.getString("username"));
+			user.setPassword(rs.getString("password"));
+			user.setSex(rs.getString("sex"));
+			user.setPhone(rs.getString("phone"));
+			user.setEmail(rs.getString("email"));
+			user.setTime(rs.getString("time"));
+			user.setPower(rs.getInt("power"));
+			return user;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -68,7 +87,7 @@ public class UserDao {
 	
 	public List<User> queryAll(){
 		List<User> list = new ArrayList<User>();
-		this.setSql("select UUID,username,password from user");
+		this.setSql("select* from user");
 		User user;
 		try {
 			pstat = connection.prepareStatement(getSql());
@@ -78,7 +97,11 @@ public class UserDao {
 				user.setUUID(rs.getString("UUID"));
 				user.setUsername(rs.getString("username"));
 				user.setPassword(rs.getString("password"));
-				
+				user.setSex(rs.getString("sex"));
+				user.setPhone(rs.getString("phone"));
+				user.setEmail(rs.getString("email"));
+				user.setTime(rs.getString("time"));
+				user.setPower(rs.getInt("power"));
 
 				list.add(user);
 				
@@ -95,25 +118,24 @@ public class UserDao {
 
 	
 	
-	public List<User> queryAllByName(String sname){
-		List<User> list = new ArrayList<User>();
-		this.setSql("select UUID,username,password from user where username=?");
+	public User getByName(String sname){
+		this.setSql("select* from user where username=?");
 		User user;
 		try {
 			pstat = connection.prepareStatement(getSql());
 			pstat.setString(1, sname);
 			ResultSet rs = pstat.executeQuery();
-			while(rs.next()){
-				user = new User();
-				user.setUUID(rs.getString("UUID"));
-				user.setUsername(rs.getString("username"));
-				user.setPassword(rs.getString("password"));
-				
-
-				list.add(user);
-				
-			}
-			return list;
+			rs.next();
+			user = new User();
+			user.setUUID(rs.getString("UUID"));
+			user.setUsername(rs.getString("username"));
+			user.setPassword(rs.getString("password"));
+			user.setSex(rs.getString("sex"));
+			user.setPhone(rs.getString("phone"));
+			user.setEmail(rs.getString("email"));
+			user.setTime(rs.getString("time"));
+			user.setPower(rs.getInt("power"));
+			return user;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -137,79 +159,11 @@ public class UserDao {
 		}
 	}
 	
-	public void save(List<User> list){
-		for(User user:list){
-			this.setSql("insert into user values('"+user.getUUID()+"','"+user.getUsername()+"','"+user.getPassword()+"');");
-			try {
-				this.pstat = this.connection.prepareStatement(this.getSql());
-				this.pstat.addBatch();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-		}
-		try {
-			this.pstat.executeBatch();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
 	public void updateUser(User user){
-		this.setSql("delete from user where UUID=?");
-		try {
-			pstat = connection.prepareStatement(getSql());
-			pstat.setString(1, user.getUUID());
-			pstat.execute();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		this.setSql("insert into user values('"+user.getUUID()+"','"+user.getUsername()+"','"+user.getPassword()+"');");
-		try {
-			stat = connection.createStatement();
-			stat.execute(this.getSql());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		remove(user.getUUID());
+		save(user);
 	}
 	
-	
-	public String getSql() {
-		return sql;
-	}
-
-	public void setSql(String sql) {
-		this.sql = sql;
-	}
-
-	public Connection getConnection() {
-		return connection;
-	}
-
-	public void setConnection(Connection connection) {
-		this.connection = connection;
-	}
-
-	public Statement getStat() {
-		return stat;
-	}
-
-	public void setStat(Statement stat) {
-		this.stat = stat;
-	}
-
-	public PreparedStatement getPstat() {
-		return pstat;
-	}
-
-	public void setPstat(PreparedStatement pstat) {
-		this.pstat = pstat;
-	}
 	
 	
 }
