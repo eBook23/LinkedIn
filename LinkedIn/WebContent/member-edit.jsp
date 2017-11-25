@@ -3,13 +3,14 @@
 <%  
 String path = request.getContextPath();  
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";  
-%>  
+%>   
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   
   <head>
-  	<base href="<%=basePath%>">
     <meta charset="UTF-8">
+    <base href="<%=basePath%>">
     <title>欢迎页面-X-admin2.0</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -29,14 +30,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <div class="x-body">
-        <form class="layui-form" action="/LinkedIn/User/add" id="myForm">
-        	<div class="layui-form-item">
+        <form class="layui-form" action="/LinkedIn/User/edit">
+        <input type="hidden" name="id" value="${user.UUID }">
+         <div class="layui-form-item">
               <label for="L_email" class="layui-form-label">
                   <span class="x-red">*</span>用户名
               </label>
               <div class="layui-input-inline">
                   <input type="text" id="L_email" name="username" required="" lay-verify="email"
-                  autocomplete="off" class="layui-input">
+                  autocomplete="off" class="layui-input" value="${user.username }">
               </div>
               <div class="layui-form-mid layui-word-aux">
                   <span class="x-red">*</span>将会成为您唯一的登入名
@@ -48,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               </label>
               <div class="layui-input-inline">
                   <input type="text" id="L_pass" name="sex" required="" lay-verify="pass"
-                  autocomplete="off" class="layui-input">
+                  autocomplete="off" class="layui-input" value="${user.sex }">
               </div>
           	</div>
           	<div class="layui-form-item">
@@ -57,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               </label>
               <div class="layui-input-inline">
                   <input type="text" id="L_email" name="email" required="" lay-verify="email"
-                  autocomplete="off" class="layui-input">
+                  autocomplete="off" class="layui-input" value="${user.email }">
               </div>
               <div class="layui-form-mid layui-word-aux">
                   <span class="x-red">*</span>将在您遗忘密码时需要
@@ -69,39 +71,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               </label>
               <div class="layui-input-inline">
                   <input type="text" id="L_repass" name="phone" required="" lay-verify="repass"
-                  autocomplete="off" class="layui-input">
+                  autocomplete="off" class="layui-input" value="${user.phone }">
               </div>
           	</div>
-          	<div class="layui-form-item">
-              <label for="L_pass" class="layui-form-label">
-                  <span class="x-red">*</span>密码
-              </label>
-              <div class="layui-input-inline">
-                  <input type="password" id="L_pass" name="pass" required="" lay-verify="pass"
-                  autocomplete="off" class="layui-input">
-              </div>
-              <div class="layui-form-mid layui-word-aux">
-                  6到16个字符
-              </div>
-          	</div>
-          	<div class="layui-form-item">
-              <label for="L_repass" class="layui-form-label">
-                  <span class="x-red">*</span>确认密码
-              </label>
-              <div class="layui-input-inline">
-                  <input type="password" id="L_repass" name="password" required="" lay-verify="repass"
-                  autocomplete="off" class="layui-input">
-              </div>
-          	</div>
-          	
           	<div class="layui-form-item">
               <label for="L_repass" class="layui-form-label">
               </label>
               <button  class="layui-btn" lay-filter="add" onclick="sub()">
-                  添加
+                  修改
               </button>
           </div>
-      </form>
+      	</form>
     </div>
   </body>
 </html>

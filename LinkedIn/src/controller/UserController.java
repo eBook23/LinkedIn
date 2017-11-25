@@ -18,7 +18,7 @@ public class UserController {
 		return "../member-list.jsp";
 	}
 	
-	public String addUser(HttpServletRequest req){
+	public String add(HttpServletRequest req){
 		User u=new User();
 		UUID uuid=UUID.randomUUID();
 		u.setUUID(uuid.toString());
@@ -31,13 +31,25 @@ public class UserController {
 		return "list";
 	}
 	
-	public String add(HttpServletRequest req){
+	public String toAdd(HttpServletRequest req){
 		return "../member-add.jsp";
 	}
 	
-	public String edit(HttpServletRequest req){
-		
-		return "";
+	public String toEdit(HttpServletRequest req){
+		User user=userService.get(req.getParameter("id"));
+		req.setAttribute("user", user);
+		return "../member-edit.jsp";
+	}
+	
+	public String edit(HttpServletRequest req) {
+		User user=userService.get(req.getParameter("id"));
+		user.setEmail(req.getParameter("email"));
+		user.setPhone(req.getParameter("phone"));
+		user.setSex(req.getParameter("sex"));
+		user.setUsername(req.getParameter("username"));
+		userService.remove(req.getParameter("id"));;
+		userService.add(user);
+		return "list";
 	}
 	
 	public String del(HttpServletRequest req){
@@ -45,9 +57,5 @@ public class UserController {
 		return "list";
 	}
 	
-	public String querry(HttpServletRequest req){
-		
-		return "";
-	}
 	
 }

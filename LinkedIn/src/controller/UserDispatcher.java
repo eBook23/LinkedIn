@@ -25,7 +25,6 @@ public class UserDispatcher extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("here's userdispatcher");
 		UserController userController=new UserController();
 		String url=request.getRequestURI();
 		url=url.substring(url.lastIndexOf("/")+1);
@@ -35,20 +34,20 @@ public class UserDispatcher extends HttpServlet {
 		case "list":
 			target=userController.list(request);
 		break;
-		case "addUser":
-			target=userController.addUser(request);
-		break;
 		case "add":
 			target=userController.add(request);
+		break;
+		case "toAdd":
+			target=userController.toAdd(request);
 		break;
 		case "edit":
 			target=userController.edit(request);
 		break;
+		case "toEdit":
+			target=userController.toEdit(request);
+		break;
 		case "del":
 			target=userController.del(request);
-		break;
-		case "querry":
-			target=userController.querry(request);
 		break;
 		}
 		if(target.endsWith("jsp")){
