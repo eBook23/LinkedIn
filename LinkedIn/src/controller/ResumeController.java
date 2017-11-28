@@ -13,7 +13,6 @@ public class ResumeController {
 	
 	public Resume getResume(HttpServletRequest request) {
 		Resume resume = new Resume();
-		resume.setUUID(request.getParameter("rno"==null?UUID.randomUUID().toString():request.getParameter("UUID")));
 		resume.setUserid(request.getParameter("userid"));
 		resume.setRname(request.getParameter("rname"));
 		resume.setSex(request.getParameter("sex"));
@@ -30,10 +29,12 @@ public class ResumeController {
 		resume.setJobintension(request.getParameter("jobintension"));
 		resume.setJobaddr(request.getParameter("jobaddr"));
 		resume.setHonor(request.getParameter("honor"));
+		resume.setUUID(request.getParameter("rno")==null?UUID.randomUUID().toString():request.getParameter("rno"));
 		return resume;
 	}
 	public String list(HttpServletRequest request) {
 		request.setAttribute("resumes", this.resumeService.queryAllByUserId(request.getParameter("userid")));
+		System.out.println( this.resumeService.queryAllByUserId(request.getParameter("userid")));
 		return "/WEB-INF/content/resume/resume-list.jsp";
 	}
 	public String toadd(HttpServletRequest request) {
@@ -41,8 +42,7 @@ public class ResumeController {
 		return "/WEB-INF/content/resume/resume-add.jsp";
 	}
 	public String add(HttpServletRequest request) {
-		resumeService.add(getResume(request));
-		System.out.println("success");
+		resumeService.add(this.getResume(request));
 		return "list";
 	}
 	public String remove(HttpServletRequest request) {

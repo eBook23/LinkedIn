@@ -6,10 +6,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
- <head>
+  <head>
   	<base href="<%=basePath%>">
     <meta charset="UTF-8">
-    <title>添加公司</title>
+    <title>添加简历</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -29,60 +29,75 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   
     <div class="x-body">
-        <form class="layui-form" action="Company/update" id="myForm">
-        	  <div class="layui-form-item">
-             <input type="hidden" id="L_email" value="${company.UUID}" name="cno" required="" lay-verify="email"
-                  autocomplete="off" class="layui-input">
-                  
-          	</div>
+        <form class="layui-form" action="Resume/update" id="myForm">
         	<div class="layui-form-item">
               <label for="L_email" class="layui-form-label">
-                  <span class="x-red">*</span>公司名称
+                  <span class="x-red">*</span>简历ID
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="L_email" value="${company.cname} " name="cname" required="" lay-verify="email"
+                  <input type="text" id="L_email" readonly="readonly" name="rno" value="${resume.UUID}" required="" lay-verify="email"
                   autocomplete="off" class="layui-input">
               </div>
               <div class="layui-form-mid layui-word-aux">
-                  <span class="x-red">*</span>公司名称唯一
+                  <span class="x-red">*</span>公司ID,唯一
+              </div>
+          	</div>
+        
+        	<div class="layui-form-item">
+              <label for="L_email" class="layui-form-label">
+                  <span class="x-red">*</span>用户ID
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="L_email" readonly="readonly" name="userid" value="${resume.userid}" required="" lay-verify="email"
+                  autocomplete="off" class="layui-input">
+              </div>
+              <div class="layui-form-mid layui-word-aux">
+                  <span class="x-red">*</span>公司ID,唯一
               </div>
           	</div>
    			<div class="layui-form-item">
               <label for="L_pass" class="layui-form-label">
-                  	总经理
+                  	姓名
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="L_pass" name="manager" value="${company.manager} " required="" lay-verify="pass"
+                  <input type="text" id="L_pass" name="rname" value="${resume.rname}" required="" lay-verify="pass"
                   autocomplete="off" class="layui-input">
               </div>
           	</div>
           	<div class="layui-form-item">
               <label for="L_email" class="layui-form-label">
-                  <span class="x-red">*</span>公司所在城市
+                  <span class="x-red">*</span>性别
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="L_email" name="position" value="${company.position} " required="" lay-verify="email"
+                  <input type="text" id="L_email" name="sex" value="${resume.sex}" required="" lay-verify="email"
                   autocomplete="off" class="layui-input">
               </div>
-              <div class="layui-form-mid layui-word-aux">
-                  <span class="x-red">*</span>主公司所在城市
+          	</div>
+          	
+          	 <div class="layui-form-item">
+              <label for="L_email" class="layui-form-label">
+                  <span class="x-red">*</span>照片
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="L_email" name="picture" value="${resume.picture}" required="" lay-verify="email"
+                  autocomplete="off" class="layui-input">
               </div>
           	</div>
           	<div class="layui-form-item">
               <label for="L_repass" class="layui-form-label">
-                  	前台电话
+                  	出生年月
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="L_repass" name="phone" value="${company.phone} " required="" lay-verify="repass"
+                  <input type="text" id="L_repass" name="birthday" value="${resume.birthday}" required="" lay-verify="repass"
                   autocomplete="off" class="layui-input">
               </div>
           	</div>
           	<div class="layui-form-item">
               <label for="L_pass" class="layui-form-label">
-                  <span class="x-red">*</span>注册时间
+                  <span class="x-red">*</span>民族
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="L_pass" name="time" value="${company.time}" required="" lay-verify="pass"
+                  <input type="text" id="L_pass" name="nation" value="${resume.nation}" required="" lay-verify="pass"
                   autocomplete="off" class="layui-input">
               </div>
               <div class="layui-form-mid layui-word-aux">
@@ -91,19 +106,128 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           	</div>
           	<div class="layui-form-item">
               <label for="L_repass" class="layui-form-label">
-                  <span class="x-red"></span>在职员工
+                  <span class="x-red"></span>专业
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="L_repass" name="countpeople" value="${company.countpeople}" required="" lay-verify="repass"
+                  <input type="text" id="L_repass" name="major" value="${resume.major}" required="" lay-verify="repass"
                   autocomplete="off" class="layui-input">
               </div>
           	</div>
           	
           	<div class="layui-form-item">
+              <label for="L_pass" class="layui-form-label">
+                  <span class="x-red">*</span>工作经历
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="L_pass" name="workexperience" value="${resume.workexperience}" required="" lay-verify="pass"
+                  autocomplete="off" class="layui-input">
+              </div>
+              <div class="layui-form-mid layui-word-aux">
+                 
+              </div>
+          	</div>
+          	<div class="layui-form-item">
+              <label for="L_pass" class="layui-form-label">
+                  <span class="x-red">*</span>邮箱
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="L_pass" name="email" value="${resume.email}" required="" lay-verify="pass"
+                  autocomplete="off" class="layui-input">
+              </div>
+              <div class="layui-form-mid layui-word-aux">
+                 
+              </div>
+          	</div>
+          	<div class="layui-form-item">
+              <label for="L_pass" class="layui-form-label">
+                  <span class="x-red">*</span>联系电话
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="L_pass" name="phone" value="${resume.phone}" required="" lay-verify="pass"
+                  autocomplete="off" class="layui-input">
+              </div>
+              <div class="layui-form-mid layui-word-aux">
+                 
+              </div>
+          	</div>
+          	<div class="layui-form-item">
+              <label for="L_pass" class="layui-form-label">
+                  <span class="x-red">*</span>兴趣爱好
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="L_pass" name="happy" value="${resume.happy}" required="" lay-verify="pass"
+                  autocomplete="off" class="layui-input">
+              </div>
+              <div class="layui-form-mid layui-word-aux">
+                 
+              </div>
+          	</div>
+          	<div class="layui-form-item">
+              <label for="L_pass" class="layui-form-label">
+                  <span class="x-red">*</span>教育背景
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="L_pass" name="education" value="${resume.education}" required="" lay-verify="pass"
+                  autocomplete="off" class="layui-input">
+              </div>
+              <div class="layui-form-mid layui-word-aux">
+                 
+              </div>
+          	</div>
+          	<div class="layui-form-item">
+              <label for="L_pass" class="layui-form-label">
+                  <span class="x-red">*</span>个人优势
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="L_pass" name="advantage" value="${resume.advantage}" required="" lay-verify="pass"
+                  autocomplete="off" class="layui-input">
+              </div>
+              <div class="layui-form-mid layui-word-aux">
+                 
+              </div>
+          	</div>
+          	<div class="layui-form-item">
+              <label for="L_pass" class="layui-form-label">
+                  <span class="x-red">*</span>工作意向
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="L_pass" name="jobintension" value="${resume.jobintension}" required="" lay-verify="pass"
+                  autocomplete="off" class="layui-input">
+              </div>
+              <div class="layui-form-mid layui-word-aux">
+                 
+              </div>
+          	</div>
+          	<div class="layui-form-item">
+              <label for="L_pass" class="layui-form-label">
+                  <span class="x-red">*</span>工作地点
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="L_pass" name="jobaddr" value="${resume.jobaddr}" required="" lay-verify="pass"
+                  autocomplete="off" class="layui-input">
+              </div>
+              <div class="layui-form-mid layui-word-aux">
+                 
+              </div>
+          	</div>
+          	<div class="layui-form-item">
+              <label for="L_pass" class="layui-form-label">
+                  <span class="x-red">*</span>获得的荣誉
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="L_pass" name="honor" value="${resume.honor}" required="" lay-verify="pass"
+                  autocomplete="off" class="layui-input">
+              </div>
+              <div class="layui-form-mid layui-word-aux">
+                 
+              </div>
+          	</div>
+
+          	<div class="layui-form-item">
               <label for="L_repass" class="layui-form-label">
               </label>
               <button  class="layui-btn" lay-filter="add" onclick="sub()">
-              		    更新
+                  更改
               </button>
           </div>
       </form>

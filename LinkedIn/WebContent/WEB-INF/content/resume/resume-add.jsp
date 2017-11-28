@@ -48,11 +48,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <span class="x-red">*</span>用户ID
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="L_email" name="userid" required="" lay-verify="email" value="${userid}" disabled="disabled"
+                  <input type="text" id="L_email" readonly="readonly" name="userid" value="${userid}" required="" lay-verify="email"
                   autocomplete="off" class="layui-input">
               </div>
               <div class="layui-form-mid layui-word-aux">
-                  <span class="x-red">*</span>用户ID唯一
+                  <span class="x-red">*</span>公司ID,唯一
               </div>
           	</div>
    			<div class="layui-form-item">
@@ -70,6 +70,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               </label>
               <div class="layui-input-inline">
                   <input type="text" id="L_email" name="sex" required="" lay-verify="email"
+                  autocomplete="off" class="layui-input">
+              </div>
+          	</div>
+          	
+          	 <div class="layui-form-item">
+              <label for="L_email" class="layui-form-label">
+                  <span class="x-red">*</span>照片
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="L_email" name="picture" required="" lay-verify="email"
                   autocomplete="off" class="layui-input">
               </div>
           	</div>
