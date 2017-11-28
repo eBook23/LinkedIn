@@ -1,6 +1,6 @@
 create database linkedin;
 use linkedin;
-//ÓÃ»§
+//ï¿½Ã»ï¿½
 create table user(
 	UUID varchar(40) primary key,
 	username varchar(40) not null,
@@ -12,27 +12,36 @@ create table user(
 	power int
 );
 
-//¼òÀú
-create table resume( 
-	UUID varchar(40) primary key,
-	user_id varchar(40),
+//ç®€å†
+create table resume(
+	UUID varchar(40) primary key, 
+	userid varchar(40),
 	rname varchar(40),
 	sex varchar(2),
-	age int,
+	picture varchar(100),
+	birthday varchar(20),
+	nation varchar(20),
+	major varchar(100),
+	workexperience varchar(100),
+	email varchar(40),
 	phone varchar(11),
 	happy varchar(40),
-	workyear varchar(20),
+	education varchar(20),
 	advantage varchar(100),
-	jobintension varchar(40),
+	jobintension varchar(100),
 	jobaddr varchar(40),
-	intro varchar(100),
-	foreign key(user_id) references user(UUID)
+	honor varchar(100),
+	foreign key(userid) references user(UUID)
 );
-//¹«Ë¾
+//ï¿½ï¿½Ë¾
 create table company(
 	UUID varchar(40) primary key,
 	cname varchar(40),
-	position varchar(40)
+	manager varchar(40),
+	position varchar(40),
+	phone varchar(13),
+	time varchar(11),
+	countpeople int
 ); 
 //Ö°Î»
 create table post(
@@ -58,19 +67,3 @@ create table user_post(
 	foreign key(post_id) references post(UUID)
 );
 
-Ç°Ì¨¹¦ÄÜ½á¹¹£º
-
-ÓÃ»§£ºµÇÂ½ ×¢²á
-¼òÀú£ºcrud
-¹«Ë¾£º²é¿´ËùÓĞ¹«Ë¾ 
-Ö°Î»£º²é¿´ËùÓĞÖ°Î»
-
-ºóÌ¨¹¦ÄÜ½á¹¹:
-
-ÓÃ»§£ºµÇÂ½×¢²á
-¼òÀú£ºcrud
-Í¶µİ¼òÀú£ºÉêÇë£¬³·»Ø
-
-¹«Ë¾£ºµÇÂ½×¢²á
-Ö°Î»£ºcrud
-´¦Àí¼òÀú£ºÍ¨¹ı£¬²µ»Ø

@@ -31,8 +31,9 @@ public class ResumeService {
 	
 	public void remove(String id){
 		resumeDao.remove(id);
-	
 	}
+	
+	
 	public void removeByResumeName(String rname){
 		resumeDao.removeByResumename(rname);
 	}
@@ -43,12 +44,14 @@ public class ResumeService {
 	}
 	
 	public void update(Resume resume){
-		
 		resumeDao.updateResume(resume);
 	}
 	
-	public List<Resume> queryAllByName(String rname){
+	public List<Resume> queryAllByUserId(String userid){
+		return resumeDao.queryAllByUserId(userid);
+	}
+	
+	public List<Resume> getByName(String rname){
 		return resumeDao.queryAllByName(rname);
-		
 	}
 }

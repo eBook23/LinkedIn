@@ -38,16 +38,13 @@ public class CompanyService {
 	
 	public Company get(String id){
 		return companyDao.get(id);
-	
 	}
 	
 	public void update(Company company){
-		
 		companyDao.updateCompany(company);
 	}
-	//通过姓名查找用户
-	public List<Company> queryAllByName(String name){
-		return companyDao.queryAllByName(name);
-		
+	
+	public List<Company> getByName(String name){
+		return companyDao.getByName(name);
 	}
 }

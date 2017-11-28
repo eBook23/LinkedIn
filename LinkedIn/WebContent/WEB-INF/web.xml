@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>LinkedIn</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
@@ -38,5 +38,25 @@
   <servlet-mapping>
     <servlet-name>UserDispatcher</servlet-name>
     <url-pattern>/User/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CompanyDispatcher</display-name>
+    <servlet-name>CompanyDispatcher</servlet-name>
+    <servlet-class>controller.CompanyDispatcher</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CompanyDispatcher</servlet-name>
+    <url-pattern>/Company/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ResumeDispatcher</display-name>
+    <servlet-name>ResumeDispatcher</servlet-name>
+    <servlet-class>controller.ResumeDispatcher</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ResumeDispatcher</servlet-name>
+    <url-pattern>/Resume/*</url-pattern>
   </servlet-mapping>
 </web-app>

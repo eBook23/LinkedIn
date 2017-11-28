@@ -18,6 +18,12 @@ public class UserController {
 		return "../member-list.jsp";
 	}
 	
+	public String ulist(HttpServletRequest req){
+		List<User> users=userService.queryAll();
+		req.setAttribute("users", users);
+		return "/WEB-INF/content/resume/rmember-list.jsp";
+	}	
+	
 	public String add(HttpServletRequest req){
 		User u=new User();
 		UUID uuid=UUID.randomUUID();

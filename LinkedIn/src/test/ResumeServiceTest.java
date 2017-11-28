@@ -40,17 +40,17 @@ public class ResumeServiceTest {
 	public void testAdd() {
 		Resume resume = new Resume();
 		resume.setUUID("2001");
-		resume.setUser_id("1003");
+	
 		resume.setRname("白浪涛");
 		resume.setSex("男");
-		resume.setAge(19);
+
 		resume.setPhone("123456789");
 		resume.setHappy("抽烟");
-		resume.setWorkyear("0");
+
 		resume.setAdvantage("12");
 		resume.setJobintension("java");
 		resume.setJobaddr("hhht");
-		resume.setIntro("java");
+
 		resumeService.add(resume);
 	}
 
@@ -79,7 +79,7 @@ public class ResumeServiceTest {
 
 	@Test
 	public void testQueryAllByName() {
-		List<Resume> list= resumeService.queryAllByName("bailangtao");
+		List<Resume> list= resumeService.getByName("bailangtao");
 		for(Resume r:list){
 			System.out.println(r);
 		}

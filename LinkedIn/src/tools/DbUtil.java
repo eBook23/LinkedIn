@@ -28,7 +28,7 @@ public class DbUtil {
 		//jdbc:mysql://47.95.204.223:3306/linkedin
 		String url="jdbc:mysql://47.95.204.223:3306/linkedin";
 		String username="root";
-		String password="lhsl842215791";	
+		String password="lhsl842215791";
 		//String password="lhsl842215791";
 		try {
 			return DriverManager.getConnection(url, username, password);

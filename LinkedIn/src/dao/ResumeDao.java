@@ -18,7 +18,7 @@ public class ResumeDao {
 	private PreparedStatement pstat;
 	
 	public void save(Resume resume){
-		this.setSql("insert into resume values('"+resume.getUUID()+"','"+resume.getUser_id()+"','"+resume.getRname()+"','"+resume.getSex()+"',"+resume.getAge()+",'"+resume.getPhone()+"','"+resume.getHappy()+"','"+resume.getWorkyear()+"','"+resume.getAdvantage()+"','"+resume.getJobintension()+"','"+resume.getJobaddr()+"','"+resume.getIntro()+"');");
+		this.setSql("insert into resume values('"+resume.getUUID()+"','"+resume.getUserid()+"','"+resume.getRname()+"','"+resume.getSex()+"','"+resume.getPicture()+"','"+resume.getBirthday()+"','"+resume.getNation()+"','"+resume.getMajor()+"','"+resume.getWorkexperience()+"','"+resume.getEmail()+"','"+resume.getPhone()+"','"+resume.getHappy()+"','"+resume.getEducation()+"','"+resume.getAdvantage()+"','"+resume.getJobintension()+"','"+resume.getJobaddr()+"','"+resume.getHonor()+"');");
 		try {
 			stat = connection.createStatement();
 			stat.execute(this.getSql());
@@ -31,7 +31,7 @@ public class ResumeDao {
 	}
 	
 	public Resume get(String id){
-		this.setSql("select UUID,user_id,rname,sex,age,phone,happy,workyear,advantage,jobintension,jobaddr,intro from resume where UUID=?");
+		this.setSql("select * from resume where UUID=?");
 		Resume resume = new Resume();
 		try {
 			pstat = connection.prepareStatement(getSql());
@@ -39,19 +39,22 @@ public class ResumeDao {
 			ResultSet rs = pstat.executeQuery();
 			while(rs.next()){
 				resume.setUUID(rs.getString("UUID"));
-				resume.setUser_id(rs.getString("user_id"));
+				resume.setUserid(rs.getString("userid"));
 				resume.setRname(rs.getString("rname"));
 				resume.setSex(rs.getString("sex"));
-				resume.setAge(rs.getInt("age"));
+				resume.setPicture(rs.getString("picture"));
+				resume.setBirthday(rs.getString("birthday"));
+				resume.setNation(rs.getString("nation"));
+				resume.setMajor(rs.getString("major"));
+				resume.setWorkexperience(rs.getString("workexperience"));
+				resume.setEmail(rs.getString("email"));
 				resume.setPhone(rs.getString("phone"));
 				resume.setHappy(rs.getString("happy"));
-				resume.setWorkyear(rs.getString("workyear"));
+				resume.setEducation(rs.getString("education"));
 				resume.setAdvantage(rs.getString("advantage"));
 				resume.setJobintension(rs.getString("jobintension"));
 				resume.setJobaddr(rs.getString("jobaddr"));
-				resume.setIntro(rs.getString("intro"));
-				
-		
+				resume.setHonor(rs.getString("honor"));
 				return resume;
 				
 			}
@@ -79,7 +82,7 @@ public class ResumeDao {
 	
 	public List<Resume> queryAll(){
 		List<Resume> list = new ArrayList<Resume>();
-		this.setSql("select UUID,user_id,rname,sex,age,phone,happy,workyear,advantage,jobintension,jobaddr,intro from resume");
+		this.setSql("select * from resume");
 		Resume resume;
 		try {
 			pstat = connection.prepareStatement(getSql());
@@ -87,19 +90,22 @@ public class ResumeDao {
 			while(rs.next()){
 				resume = new Resume();
 				resume.setUUID(rs.getString("UUID"));
-				resume.setUser_id(rs.getString("user_id"));
+				resume.setUserid(rs.getString("userid"));
 				resume.setRname(rs.getString("rname"));
 				resume.setSex(rs.getString("sex"));
-				resume.setAge(rs.getInt("age"));
+				resume.setPicture(rs.getString("picture"));
+				resume.setBirthday(rs.getString("birthday"));
+				resume.setNation(rs.getString("nation"));
+				resume.setMajor(rs.getString("major"));
+				resume.setWorkexperience(rs.getString("workexperience"));
+				resume.setEmail(rs.getString("email"));
 				resume.setPhone(rs.getString("phone"));
 				resume.setHappy(rs.getString("happy"));
-				resume.setWorkyear(rs.getString("workyear"));
+				resume.setEducation(rs.getString("education"));
 				resume.setAdvantage(rs.getString("advantage"));
 				resume.setJobintension(rs.getString("jobintension"));
 				resume.setJobaddr(rs.getString("jobaddr"));
-				resume.setIntro(rs.getString("intro"));
-				
-
+				resume.setHonor(rs.getString("honor"));
 				list.add(resume);
 				
 			}
@@ -112,12 +118,51 @@ public class ResumeDao {
 		
 		return null;
 	}
-
+	
+	public List<Resume> queryAllByUserId(String userid){
+		List<Resume> list = new ArrayList<Resume>();
+		this.setSql("select * from resume where userid=?");
+		Resume resume;
+		try {
+			pstat = connection.prepareStatement(getSql());
+			pstat.setString(1, userid);
+			ResultSet rs = pstat.executeQuery();
+			while(rs.next()){
+				resume = new Resume();
+				resume.setUUID(rs.getString("UUID"));
+				resume.setUserid(rs.getString("userid"));
+				resume.setRname(rs.getString("rname"));
+				resume.setSex(rs.getString("sex"));
+				resume.setPicture(rs.getString("picture"));
+				resume.setBirthday(rs.getString("birthday"));
+				resume.setNation(rs.getString("nation"));
+				resume.setMajor(rs.getString("major"));
+				resume.setWorkexperience(rs.getString("workexperience"));
+				resume.setEmail(rs.getString("email"));
+				resume.setPhone(rs.getString("phone"));
+				resume.setHappy(rs.getString("happy"));
+				resume.setEducation(rs.getString("education"));
+				resume.setAdvantage(rs.getString("advantage"));
+				resume.setJobintension(rs.getString("jobintension"));
+				resume.setJobaddr(rs.getString("jobaddr"));
+				resume.setHonor(rs.getString("honor"));
+				list.add(resume);
+				
+			}
+			return list;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}
+		
+		return null;
+	}
 	
 	
 	public List<Resume> queryAllByName(String rname){
 		List<Resume> list = new ArrayList<Resume>();
-		this.setSql("select UUID,user_id,rname,sex,age,phone,happy,workyear,advantage,jobintension,jobaddr,intro from resume where rname=?");
+		this.setSql("select * from resume where rname=?");
 		Resume resume;
 		try {
 			pstat = connection.prepareStatement(getSql());
@@ -126,19 +171,22 @@ public class ResumeDao {
 			while(rs.next()){
 				resume = new Resume();
 				resume.setUUID(rs.getString("UUID"));
-				resume.setUser_id(rs.getString("user_id"));
+				resume.setUserid(rs.getString("userid"));
 				resume.setRname(rs.getString("rname"));
 				resume.setSex(rs.getString("sex"));
-				resume.setAge(rs.getInt("age"));
+				resume.setPicture(rs.getString("picture"));
+				resume.setBirthday(rs.getString("birthday"));
+				resume.setNation(rs.getString("nation"));
+				resume.setMajor(rs.getString("major"));
+				resume.setWorkexperience(rs.getString("workexperience"));
+				resume.setEmail(rs.getString("email"));
 				resume.setPhone(rs.getString("phone"));
 				resume.setHappy(rs.getString("happy"));
-				resume.setWorkyear(rs.getString("workyear"));
+				resume.setEducation(rs.getString("education"));
 				resume.setAdvantage(rs.getString("advantage"));
 				resume.setJobintension(rs.getString("jobintension"));
 				resume.setJobaddr(rs.getString("jobaddr"));
-				resume.setIntro(rs.getString("intro"));
-				
-
+				resume.setHonor(rs.getString("honor"));
 				list.add(resume);
 				
 			}
@@ -158,19 +206,15 @@ public class ResumeDao {
 			pstat = connection.prepareStatement(getSql());
 			pstat.setString(1, rname);
 			pstat.execute();
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
 		}
-		
 	}
 	
 	public void save(List<Resume> list){
-		
 		for(Resume resume:list){
-			this.setSql("insert into resume values('"+resume.getUUID()+"','"+resume.getUser_id()+"','"+resume.getRname()+"','"+resume.getSex()+"',"+resume.getAge()+",'"+resume.getPhone()+"','"+resume.getHappy()+"','"+resume.getWorkyear()+"','"+resume.getAdvantage()+"','"+resume.getJobintension()+"','"+resume.getJobaddr()+"','"+resume.getIntro()+"');");
+			this.setSql("insert into resume values('"+resume.getUUID()+"','"+resume.getUserid()+"','"+resume.getRname()+"','"+resume.getSex()+"','"+resume.getPicture()+"','"+resume.getBirthday()+"','"+resume.getNation()+"','"+resume.getMajor()+"','"+resume.getWorkexperience()+"','"+resume.getEmail()+"','"+resume.getPhone()+"','"+resume.getHappy()+"','"+resume.getEducation()+"','"+resume.getAdvantage()+"','"+resume.getJobintension()+"','"+resume.getJobaddr()+"','"+resume.getHonor()+"');");
 			try {
 				this.pstat = this.connection.prepareStatement(this.getSql());
 				this.pstat.addBatch();
@@ -189,24 +233,8 @@ public class ResumeDao {
 		
 	}
 	public void updateResume(Resume resume){
-		this.setSql("delete from resume where UUID=?");
-		try {
-			pstat = connection.prepareStatement(getSql());
-			pstat.setString(1, resume.getUUID());
-			pstat.execute();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		this.setSql("insert into resume values('"+resume.getUUID()+"','"+resume.getUser_id()+"','"+resume.getRname()+"','"+resume.getSex()+"',"+resume.getAge()+",'"+resume.getPhone()+"','"+resume.getHappy()+"','"+resume.getWorkyear()+"','"+resume.getAdvantage()+"','"+resume.getJobintension()+"','"+resume.getJobaddr()+"','"+resume.getIntro()+"');");
-		try {
-			stat = connection.createStatement();
-			stat.execute(this.getSql());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		remove(resume.getUUID());
+		save(resume);
 	}
 	
 	

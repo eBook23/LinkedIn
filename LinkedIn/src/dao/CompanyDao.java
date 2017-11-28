@@ -18,7 +18,7 @@ public class CompanyDao {
 	private PreparedStatement pstat;
 	
 	public void save(Company company){
-		this.setSql("insert into company values('"+company.getUUID()+"','"+company.getCname()+"','"+company.getPosition()+"');");
+		this.setSql("insert into company values('"+company.getUUID()+"','"+company.getCname()+"','"+company.getManager()+"','"+company.getPosition()+"','"+company.getPhone()+"','"+company.getTime()+"',"+company.getCountpeople()+");");
 		try {
 			stat = connection.createStatement();
 			stat.execute(this.getSql());
@@ -31,7 +31,7 @@ public class CompanyDao {
 	}
 	
 	public Company get(String id){
-		this.setSql("select UUID,cname,position from company where UUID=?");
+		this.setSql("select * from company where UUID=?");
 		Company company = new Company();
 		try {
 			pstat = connection.prepareStatement(getSql());
@@ -40,11 +40,12 @@ public class CompanyDao {
 			while(rs.next()){
 				company.setUUID(rs.getString("UUID"));
 				company.setCname(rs.getString("cname"));
+				company.setManager(rs.getString("manager"));
 				company.setPosition(rs.getString("position"));
-				
-		
+				company.setPhone(rs.getString("phone"));
+				company.setTime(rs.getString("time"));
+				company.setCountpeople(rs.getInt("countpeople"));
 				return company;
-				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -64,13 +65,12 @@ public class CompanyDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
 		}
 	}
 	
 	public List<Company> queryAll(){
 		List<Company> list = new ArrayList<Company>();
-		this.setSql("select UUID,cname,position from company");
+		this.setSql("select * from company");
 		Company company;
 		try {
 			pstat = connection.prepareStatement(getSql());
@@ -79,11 +79,12 @@ public class CompanyDao {
 				company = new Company();
 				company.setUUID(rs.getString("UUID"));
 				company.setCname(rs.getString("cname"));
+				company.setManager(rs.getString("manager"));
 				company.setPosition(rs.getString("position"));
-				
-
+				company.setPhone(rs.getString("phone"));
+				company.setTime(rs.getString("time"));
+				company.setCountpeople(rs.getInt("countpeople"));
 				list.add(company);
-				
 			}
 			return list;
 		} catch (SQLException e) {
@@ -95,33 +96,31 @@ public class CompanyDao {
 		return null;
 	}
 
-	
-	
-	public List<Company> queryAllByName(String cname){
+	public List<Company> getByName(String cname){
 		List<Company> list = new ArrayList<Company>();
-		this.setSql("select UUID,cname,position from company where cname=?");
+		this.setSql("select * from company where cname=?");
 		Company company;
 		try {
 			pstat = connection.prepareStatement(getSql());
 			pstat.setString(1, cname);
 			ResultSet rs = pstat.executeQuery();
-			while(rs.next()){
-				company = new Company();
+			if(rs.next()) {
+				company= new Company();
 				company.setUUID(rs.getString("UUID"));
 				company.setCname(rs.getString("cname"));
+				company.setManager(rs.getString("manager"));
 				company.setPosition(rs.getString("position"));
-				
-
+				company.setPhone(rs.getString("phone"));
+				company.setTime(rs.getString("time"));
+				company.setCountpeople(rs.getInt("countpeople"));
 				list.add(company);
-				
+				return list;
 			}
-			return list;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			
 		}
-		
 		return null;
 	}
 	
@@ -140,46 +139,9 @@ public class CompanyDao {
 		
 	}
 	
-	public void save(List<Company> list){
-		
-		for(Company company:list){
-			this.setSql("insert into company values('"+company.getUUID()+"','"+company.getCname()+"','"+company.getPosition()+"');");
-			try {
-				this.pstat = this.connection.prepareStatement(this.getSql());
-				this.pstat.addBatch();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-		}
-		try {
-			this.pstat.executeBatch();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
 	public void updateCompany(Company company){
-		this.setSql("delete from company where UUID=?");
-		try {
-			pstat = connection.prepareStatement(getSql());
-			pstat.setString(1, company.getUUID());
-			pstat.execute();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		this.setSql("insert into company values('"+company.getUUID()+"','"+company.getCname()+"','"+company.getPosition()+"');");
-		try {
-			stat = connection.createStatement();
-			stat.execute(this.getSql());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		remove(company.getUUID());
+		save(company);
 	}
 	
 	

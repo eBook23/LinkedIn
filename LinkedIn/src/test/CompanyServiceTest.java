@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import bean.Company;
+import bean.Post;
 import bean.User;
 
 import service.CompanyService;
@@ -36,55 +37,58 @@ public class CompanyServiceTest {
 	public void testCompanyService() {
 		fail("Not yet implemented");
 	}
-	//�������й�˾
+	//锟斤拷锟斤拷锟斤拷锟叫癸拷司
 	@Test
 	public void testQueryAll() {
 		List<Company> list= companyService.queryAll();
 		for(Company c:list){
-			System.out.println(c);
+			System.out.println(c.toString());
 		}
 	}
 
-	//��ӹ�˾
+	//锟斤拷庸锟剿�
 	@Test
 	public void testAdd() {
 		Company company = new Company();
 		company.setUUID("1234");
-		company.setCname("shanghai");
-		company.setPosition("china zhongxin ");
+		company.setCname("taobao");
+		company.setManager("mayun");
+		company.setPosition("shanghai");
+		company.setPhone("0472-8888888");
+		company.setTime("123");
+		company.setCountpeople(10000);
 		companyService.add(company);
 	}
-	//ͨ��IDɾ����˾
+	//通锟斤拷ID删锟斤拷锟斤拷司
 	@Test
 	public void testRemove() {
 		companyService.remove("1234");
 	}
-	//ͨ����˾��ɾ����˾
+	//通锟斤拷锟斤拷司锟斤拷删锟斤拷锟斤拷司
 	@Test
 	public void testRemoveByCompanyName() {
 		companyService.removeByCompanyName("bailangtao");
 	}
-	//ͨ��ID��ѯ��Ϣ
+	//通锟斤拷ID锟斤拷询锟斤拷息
 	@Test
 	public void testGet() {
 		Company c= companyService.get("1234");
 		System.out.println("cname:  "+c.getCname());
 	}
-	//���¹�˾
+	//锟斤拷锟铰癸拷司
 	@Test
 	public void testUpdate() {
 		Company c =companyService.get("1234");
-		c.setCname("shengzheng");
+		c.setCname("lskdjflaskdjf");
 		companyService.update(c);
 	}
-	//ͨ�����Ʋ��ҹ�˾
+	//通锟斤拷锟斤拷锟狡诧拷锟揭癸拷司
 	@Test
-	public void testQueryAllByName() {
-		List<Company> list= companyService.queryAllByName("shanghai");
-				for(Company c:list){
-					System.out.println(c);
-				}
-
+	public void testGetByName() {
+		List<Company> list= companyService.getByName("dafsd");
+		for(Company c:list){
+			System.out.println(c.toString());
+		}
 	}
 
 }

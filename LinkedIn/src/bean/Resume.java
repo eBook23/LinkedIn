@@ -2,28 +2,33 @@ package bean;
 
 public class Resume {
 	private String UUID;
-	private String user_id;
+	private String userid;
 	private String rname;
 	private String sex;
-	private int age;
+	private String picture;
+	private String birthday;
+	private String nation;
+	private String major;
+	private String workexperience;
+	private String email;
 	private String phone;
 	private String happy;
-	private String workyear;
+	private String education;
 	private String advantage;
 	private String jobintension;
 	private String jobaddr;
-	private String intro;
+	private String honor;
 	public String getUUID() {
 		return UUID;
 	}
 	public void setUUID(String uUID) {
 		UUID = uUID;
 	}
-	public String getUser_id() {
-		return user_id;
+	public String getUserid() {
+		return userid;
 	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 	public String getRname() {
 		return rname;
@@ -37,11 +42,41 @@ public class Resume {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-	public int getAge() {
-		return age;
+	public String getPicture() {
+		return picture;
 	}
-	public void setAge(int age) {
-		this.age = age;
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+	public String getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+	public String getNation() {
+		return nation;
+	}
+	public void setNation(String nation) {
+		this.nation = nation;
+	}
+	public String getMajor() {
+		return major;
+	}
+	public void setMajor(String major) {
+		this.major = major;
+	}
+	public String getWorkexperience() {
+		return workexperience;
+	}
+	public void setWorkexperience(String workexperience) {
+		this.workexperience = workexperience;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getPhone() {
 		return phone;
@@ -55,11 +90,11 @@ public class Resume {
 	public void setHappy(String happy) {
 		this.happy = happy;
 	}
-	public String getWorkyear() {
-		return workyear;
+	public String getEducation() {
+		return education;
 	}
-	public void setWorkyear(String workyear) {
-		this.workyear = workyear;
+	public void setEducation(String education) {
+		this.education = education;
 	}
 	public String getAdvantage() {
 		return advantage;
@@ -79,11 +114,19 @@ public class Resume {
 	public void setJobaddr(String jobaddr) {
 		this.jobaddr = jobaddr;
 	}
-	public String getIntro() {
-		return intro;
+	public String getHonor() {
+		return honor;
 	}
-	public void setIntro(String intro) {
-		this.intro = intro;
+	public void setHonor(String honor) {
+		this.honor = honor;
+	}
+	@Override
+	public String toString() {
+		return "Resume [UUID=" + UUID + ", userid=" + userid + ", rname=" + rname + ", sex=" + sex + ", picture="
+				+ picture + ", birthday=" + birthday + ", nation=" + nation + ", major=" + major + ", workexperience="
+				+ workexperience + ", email=" + email + ", phone=" + phone + ", happy=" + happy + ", education="
+				+ education + ", advantage=" + advantage + ", jobintension=" + jobintension + ", jobaddr=" + jobaddr
+				+ ", honor=" + honor + "]";
 	}
 	
 }
