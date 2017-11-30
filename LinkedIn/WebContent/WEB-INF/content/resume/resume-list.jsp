@@ -36,16 +36,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
     </div>
     <div class="x-body">
+    <c:forEach var="r" items="${resumes }" begin="0" end="0">
       <div class="layui-row">
-        <form class="layui-form layui-col-md12 x-so" action="">
+        <form class="layui-form layui-col-md12 x-so" action="Resume/list?userid=${r.userid }">
           <input type="text" name="cname"  placeholder="输入姓名" autocomplete="off" class="layui-input">
           <button  class="layui-btn" lay-filter="add" onclick="sub()"><i class="layui-icon">&#xe615;</i></button>
         </form>
       </div>
       <xblock>
-      	<a href="Resume/toadd"><button class="layui-btn"><i class="layui-icon"></i>添加</button></a>
-        <span class="x-right" style="line-height:40px">共有数据：88 条</span>
+      	<a href="Resume/toadd?userid=${r.userid}"><button class="layui-btn"><i class="layui-icon"></i>添加</button></a>
+        <span class="x-right" style="line-height:40px">共${resumes.size()}条数据</span>
       </xblock>
+      </c:forEach>
       <table class="layui-table">
         <thead>
           <tr>
