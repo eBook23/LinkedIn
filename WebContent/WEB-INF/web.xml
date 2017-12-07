@@ -59,4 +59,14 @@
     <servlet-name>ResumeDispatcher</servlet-name>
     <url-pattern>/Resume/*</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PostDispatcher</display-name>
+    <servlet-name>PostDispatcher</servlet-name>
+    <servlet-class>controller.PostDispatcher</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PostDispatcher</servlet-name>
+    <url-pattern>/Post/*</url-pattern>
+  </servlet-mapping>
 </web-app>

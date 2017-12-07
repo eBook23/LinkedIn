@@ -16,23 +16,27 @@ public class SecurityController {
 		String username=req.getParameter("username");
 		String password=req.getParameter("password");
 		List<User> list=userService.queryAll();
-		User u=null;
+		User user=null;
 		Boolean flag=false;
-		for(User t:list){
-			if(t.getUsername().equals(username)){
+		for(User u:list){
+			if(u.getUsername().equals(username)){
 				flag=true;
-				u=t;
+				user=u;
 				break;
 			}
 		}
 		if(!flag){
 			//用户不存在
 			return "../login.html";
-		}else if(u.getPassword().endsWith(password)){
+		}else if(user.getPassword().equals(password)&&user.getPower()==1){
 			//登陆成功
 			HttpSession session=req.getSession();
-			session.setAttribute("user", u);
-			return "../index.html";
+			session.setAttribute("user", user);
+			return "/WEB-INF/content/admin/index.jsp";
+		}else if(user.getPassword().equals(password)&&user.getPower()==0){
+			HttpSession session=req.getSession();
+			session.setAttribute("user", user);
+			return "/WEB-INF/index.jsp";
 		}else{
 			//密码错误
 			return "../login.html";

@@ -63,7 +63,7 @@ public class UserService {
 	 * @param name
 	 * @return
 	 */
-	public User getByName(String name){
+	public List<User> getByName(String name){
 		return userDao.getByName(name);
 		
 	}

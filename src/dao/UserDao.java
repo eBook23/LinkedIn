@@ -118,7 +118,8 @@ public class UserDao {
 
 	
 	
-	public User getByName(String sname){
+	public List<User> getByName(String sname){
+		List<User> list = new ArrayList<User>();
 		this.setSql("select* from user where username=?");
 		User user;
 		try {
@@ -135,7 +136,8 @@ public class UserDao {
 			user.setEmail(rs.getString("email"));
 			user.setTime(rs.getString("time"));
 			user.setPower(rs.getInt("power"));
-			return user;
+			list.add(user);
+			return list;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

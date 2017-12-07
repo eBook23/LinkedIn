@@ -23,12 +23,18 @@ public class CompanyController {
 		return company;
 	}
 	
+	public String listByName(HttpServletRequest request) {
+		request.setAttribute("companys",this.companyService.getByName(request.getParameter("cname")));
+		System.out.println(this.companyService.getByName(request.getParameter("cname")));
+		return "/WEB-INF/content/admin/company/company-list.jsp";
+	}
+	
 	public String list(HttpServletRequest request) {
 		request.setAttribute("companys",this.companyService.queryAll());
-		return "/WEB-INF/content/company/company-list.jsp";
+		return "/WEB-INF/content/admin/company/company-list.jsp";
 	}
 	public String toadd(HttpServletRequest request) {
-		return "/WEB-INF/content/company/company-add.jsp";
+		return "/WEB-INF/content/admin/company/company-add.jsp";
 	}
 	public String add(HttpServletRequest request) {
 		companyService.add(getCompany(request));
@@ -39,13 +45,13 @@ public class CompanyController {
 		return "list";
 	}
 	public String getByName(HttpServletRequest request) {
-		request.setAttribute("companys",this.companyService.getByName(request.getParameter("cname")));
-		return "list";
+	
+		return "listByName?cname="+request.getParameter("cname");
 	}	
 	
 	public String get(HttpServletRequest request) {
 		request.setAttribute("company", companyService.get(request.getParameter("cno")));
-		return "/WEB-INF/content/company/company-edit.jsp";
+		return "/WEB-INF/content/admin/company/company-edit.jsp";
 	}	
 
 	public String update(HttpServletRequest request) {

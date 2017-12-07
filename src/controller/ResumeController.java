@@ -32,22 +32,30 @@ public class ResumeController {
 		resume.setUUID(request.getParameter("rno")==null?UUID.randomUUID().toString():request.getParameter("rno"));
 		return resume;
 	}
+	
+//	public String listById(HttpServletRequest request) {
+//		request.setAttribute("resumes", this.resumeService.queryAllByUserId(request.getParameter("rno")));
+//		System.out.println( this.resumeService.queryAllByUserId(request.getParameter("userid")));
+//		return "/WEB-INF/content/admin/resume/resume-list.jsp";
+//	}
+	
 	public String list(HttpServletRequest request) {
 		request.setAttribute("resumes", this.resumeService.queryAllByUserId(request.getParameter("userid")));
 		System.out.println( this.resumeService.queryAllByUserId(request.getParameter("userid")));
-		return "/WEB-INF/content/resume/resume-list.jsp";
+		return "/WEB-INF/content/admin/resume/resume-list.jsp";
 	}
 	public String toadd(HttpServletRequest request) {
 		request.setAttribute("userid", request.getParameter("userid"));
-		return "/WEB-INF/content/resume/resume-add.jsp";
+		return "/WEB-INF/content/admin/resume/resume-add.jsp";
 	}
 	public String add(HttpServletRequest request) {
+		Resume resume = this.getResume(request);
 		resumeService.add(this.getResume(request));
-		return "list";
+		return "list?userid="+resume.getUserid();
 	}
 	public String remove(HttpServletRequest request) {
 		resumeService.remove(request.getParameter("rno"));
-		return "list";
+		return "list?userid="+request.getParameter("userid");
 	}
 	public String getByName(HttpServletRequest request) {
 		request.setAttribute("resumes", this.resumeService.getByName(request.getParameter("rname")));
@@ -55,12 +63,12 @@ public class ResumeController {
 	}
 	public String get(HttpServletRequest request) {
 		request.setAttribute("resume", this.resumeService.get(request.getParameter("rno")));
-		return "/WEB-INF/content/resume/resume-edit.jsp";
+		return "/WEB-INF/content/admin/resume/resume-edit.jsp";
 	}
 	public String update(HttpServletRequest request) {
 		Resume resume = this.getResume(request);
 		this.resumeService.update(resume);
-		return "list";
+		return "list?userid="+resume.getUserid();
 	}
 	
 }

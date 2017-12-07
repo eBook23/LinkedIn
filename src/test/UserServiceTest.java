@@ -79,7 +79,7 @@ public class UserServiceTest {
 	 */
 	@Test
 	public void testGetByName() {
-		User u =  userService.getByName("alice");
+		List<User> u =  userService.getByName("alice");
 		System.out.println(u);
 	}
 	

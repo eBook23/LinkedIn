@@ -49,6 +49,12 @@ public class UserDispatcher extends HttpServlet {
 		case "del":
 			target=userController.del(request);
 		break;
+		case "listByName":
+			target = userController.listByName(request);
+			break;
+		case "getByName":
+			target=userController.getByName(request);
+			break;
 		case "ulist":
 			target=userController.ulist(request);
 		break;

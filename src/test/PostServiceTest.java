@@ -23,7 +23,7 @@ public class PostServiceTest {
 	public void testPostService() {
 		fail("Not yet implemented");
 	}
-	//²éÕÒËùÓÐÖ°Î»
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö°Î»
 	@Test
 	public void testQueryAll() {
 		List<Post> list= postService.queryAll();
@@ -31,7 +31,7 @@ public class PostServiceTest {
 			System.out.println(c);
 		}
 	}
-	//Ìí¼ÓÖ°Î»
+	//ï¿½ï¿½ï¿½Ö°Î»
 	@Test
 	public void testAdd() {
 		Post post = new Post();
@@ -39,33 +39,33 @@ public class PostServiceTest {
 		post.setName("java");
 		postService.add(post);
 	}
-//Í¨¹ýIDÉ¾³ýÖ°Î»
+//Í¨ï¿½ï¿½IDÉ¾ï¿½ï¿½Ö°Î»
 	@Test
 	public void testRemove() {
 		postService.remove("123");
 	}
-//Í¨¹ýÃû³ÆÉ¾³ýÖ°Î»
+//Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½Ö°Î»
 	@Test
 	public void testRemoveByPostName() {
 		postService.removeByPostName("java");
 	}
-//Í¨¹ýID²éÕÒÖ°Î»
+//Í¨ï¿½ï¿½IDï¿½ï¿½ï¿½ï¿½Ö°Î»
 	@Test
 	public void testGet() {
 		Post post =postService.get("123");
 		System.out.println(post);
 	}
-//¸üÐÂÖ°Î»
+//ï¿½ï¿½ï¿½ï¿½Ö°Î»
 	@Test
 	public void testUpdate() {
 		Post c =postService.get("123");
 		c.setName("php");
 		postService.update(c);
 	}
-//Í¨¹ýÐÕÃû²éÕÒÖ°Î»
+//Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö°Î»
 	@Test
 	public void testQueryAllByName() {
-		List<Post> list= postService.queryAllByName("java");
+		List<Post> list= postService.getByName("java");
 		for(Post c:list){
 			System.out.println(c);
 		}

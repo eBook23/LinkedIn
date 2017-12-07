@@ -59,7 +59,6 @@ public class ResumeDispatcher extends HttpServlet {
 		}else {
 			response.sendRedirect(traget);
 		}
-		
 	}
 
 	/**

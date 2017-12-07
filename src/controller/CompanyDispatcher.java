@@ -33,6 +33,9 @@ public class CompanyDispatcher extends HttpServlet {
 		case "list":
 			traget = controller.list(request);
 			break;
+		case "listByName":
+			traget = controller.listByName(request);
+			break;
 		case "toadd":
 			traget = controller.toadd(request);
 			break;

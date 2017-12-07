@@ -47,7 +47,7 @@ public class PostService {
 		postDao.updatePost(post);
 	}
 	
-	public List<Post> queryAllByName(String name){
+	public List<Post> getByName(String name){
 		return postDao.queryAllByName(name);
 		
 	}

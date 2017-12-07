@@ -1,5 +1,5 @@
 eclipse.preferences.version=1
-encoding//WebContent/WEB-INF/content/company/company-add.jsp=UTF-8
-encoding//WebContent/WEB-INF/content/company/company-edit.jsp=UTF-8
-encoding//WebContent/member-edit.jsp=UTF-8
+encoding//WebContent/WEB-INF/content/admin/company/company-add.jsp=UTF-8
+encoding//WebContent/WEB-INF/content/admin/company/company-edit.jsp=UTF-8
+encoding//WebContent/WEB-INF/content/admin/member/member-edit.jsp=UTF-8
 encoding//src/test/CompanyServiceTest.java=UTF-8

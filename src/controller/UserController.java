@@ -15,13 +15,19 @@ public class UserController {
 	public String list(HttpServletRequest req){
 		List<User> users=userService.queryAll();
 		req.setAttribute("users", users);
-		return "../member-list.jsp";
+		return "/WEB-INF/content/admin/member/member-list.jsp";
 	}
+	
+	public String listByName(HttpServletRequest req){
+		List<User> users=userService.getByName(req.getParameter("username"));
+		req.setAttribute("users", users);
+		return "/WEB-INF/content/admin/member/member-list.jsp";
+	}	
 	
 	public String ulist(HttpServletRequest req){
 		List<User> users=userService.queryAll();
 		req.setAttribute("users", users);
-		return "/WEB-INF/content/resume/rmember-list.jsp";
+		return "/WEB-INF/content/admin/resume/rmember-list.jsp";
 	}	
 	
 	public String add(HttpServletRequest req){
@@ -38,13 +44,13 @@ public class UserController {
 	}
 	
 	public String toAdd(HttpServletRequest req){
-		return "../member-add.jsp";
+		return "/WEB-INF/content/admin/member/member-add.jsp";
 	}
 	
 	public String toEdit(HttpServletRequest req){
 		User user=userService.get(req.getParameter("id"));
 		req.setAttribute("user", user);
-		return "../member-edit.jsp";
+		return "/WEB-INF/content/admin/member/member-edit.jsp";
 	}
 	
 	public String edit(HttpServletRequest req) {
@@ -61,6 +67,10 @@ public class UserController {
 	public String del(HttpServletRequest req){
 		userService.removeByUserName(req.getParameter("username"));
 		return "list";
+	}
+	
+	public String getByName(HttpServletRequest req) {
+		return "listByName?username="+req.getParameter("username");
 	}
 	
 	

@@ -85,7 +85,7 @@ public class CompanyServiceTest {
 	//通锟斤拷锟斤拷锟狡诧拷锟揭癸拷司
 	@Test
 	public void testGetByName() {
-		List<Company> list= companyService.getByName("dafsd");
+		List<Company> list= companyService.getByName("taobao");
 		for(Company c:list){
 			System.out.println(c.toString());
 		}
