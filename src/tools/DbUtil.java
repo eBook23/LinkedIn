@@ -23,17 +23,13 @@ public class DbUtil {
 	public static DbUtil getInstance(){
 		return instance;
 	}
-	// jdbc:mysql://localhost:3307/student_manage
 	public Connection getConnection(){
-		//jdbc:mysql://47.95.204.223:3306/linkedin
-		String url="jdbc:mysql://47.95.204.223:3306/linkedin";
+		String url="jdbc:mysql://localhost:3306/linkedin?serverTimezone=GMT%2B8";
 		String username="root";
-		String password="lhsl842215791";
-		//String password="lhsl842215791";
+		String password="root";
 		try {
 			return DriverManager.getConnection(url, username, password);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;

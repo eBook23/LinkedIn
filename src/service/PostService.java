@@ -8,15 +8,9 @@ import dao.PostDao;
 import tools.DbUtil;
 
 public class PostService {
-	Connection connection;
-	PostDao postDao;
+	PostDao postDao=new PostDao();
 
-	
-	public PostService(){
-		connection = DbUtil.getInstance().getConnection();
-		postDao = new PostDao();
-		postDao.setConnection(connection);
-	}
+
 
 	public List<Post> queryAll(){
 		return postDao.queryAll();

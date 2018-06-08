@@ -9,16 +9,9 @@ import dao.Company_PostDao;
 import tools.DbUtil;
 
 public class Company_PostService {
-	Connection connection;
-	Company_PostDao cpDao;
+	Company_PostDao cpDao=new Company_PostDao();
 
 	
-	public Company_PostService(){
-		connection = DbUtil.getInstance().getConnection();
-		cpDao = new Company_PostDao();
-		cpDao.setConnection(connection);
-	}
-
 	public List<Company_post> queryAll(){
 		return cpDao.queryAll();
 		

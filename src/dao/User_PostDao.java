@@ -10,11 +10,7 @@ import java.util.List;
 
 import bean.User_post;
 
-public class User_PostDao {
-	private String sql;
-	private Connection connection;
-	private Statement stat;
-	private PreparedStatement pstat;
+public class User_PostDao extends CommonDao{
 	
 	public void save(User_post upost){
 		this.setSql("insert into user_post values('"+upost.getUser_id()+"','"+upost.getPost_id()+"');");
@@ -161,31 +157,5 @@ public class User_PostDao {
 		return sql;
 	}
 
-	public void setSql(String sql) {
-		this.sql = sql;
-	}
 
-	public Connection getConnection() {
-		return connection;
-	}
-
-	public void setConnection(Connection connection) {
-		this.connection = connection;
-	}
-
-	public Statement getStat() {
-		return stat;
-	}
-
-	public void setStat(Statement stat) {
-		this.stat = stat;
-	}
-
-	public PreparedStatement getPstat() {
-		return pstat;
-	}
-
-	public void setPstat(PreparedStatement pstat) {
-		this.pstat = pstat;
-	}
 }

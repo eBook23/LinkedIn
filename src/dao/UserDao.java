@@ -12,28 +12,8 @@ import java.util.UUID;
 import bean.User;
 
 
-public class UserDao {
-	private String sql;
-	public String getSql() {
-		return sql;
-	}
+public class UserDao extends CommonDao{
 
-	public void setSql(String sql) {
-		this.sql = sql;
-	}
-
-	public Connection getConnection() {
-		return connection;
-	}
-
-	public void setConnection(Connection connection) {
-		this.connection = connection;
-	}
-
-	private Connection connection;
-	private Statement stat;
-	private PreparedStatement pstat;
-	
 	public void save(User user){
 		this.setSql("insert into user values('"+user.getUUID()+"','"+user.getUsername()+"','"+user.getPassword()+"','"+user.getSex()+"','"+user.getPhone()+"','"+user.getEmail()+"','"+user.getTime()+"',"+user.getPower()+");");
 		try {

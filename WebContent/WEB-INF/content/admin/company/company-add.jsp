@@ -19,30 +19,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="js/xadmin.js"></script>
-    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
-    <!--[if lt IE 9]>
-      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
-      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
   
   <body>
   
     <div class="x-body">
         <form class="layui-form" action="Company/add" id="myForm">
-        	<div class="layui-form-item">
-              <label for="L_email" class="layui-form-label">
-                  <span class="x-red">*</span>公司ID
-              </label>
-              <div class="layui-input-inline">
-                  <input type="text" id="L_email" disabled="disabled" name="cno" required="" lay-verify="email"
-                  autocomplete="off" class="layui-input">
-              </div>
-              <div class="layui-form-mid layui-word-aux">
-                  <span class="x-red">*</span>公司ID,唯一
-              </div>
-          	</div>
-        
+        	
         	<div class="layui-form-item">
               <label for="L_email" class="layui-form-label">
                   <span class="x-red">*</span>公司名称

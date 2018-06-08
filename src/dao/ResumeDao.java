@@ -11,11 +11,7 @@ import java.util.List;
 import bean.Resume;
 
 
-public class ResumeDao {
-	private String sql;
-	private Connection connection;
-	private Statement stat;
-	private PreparedStatement pstat;
+public class ResumeDao extends CommonDao{
 	
 	public void save(Resume resume){
 		this.setSql("insert into resume values('"+resume.getUUID()+"','"+resume.getUserid()+"','"+resume.getRname()+"','"+resume.getSex()+"','"+resume.getPicture()+"','"+resume.getBirthday()+"','"+resume.getNation()+"','"+resume.getMajor()+"','"+resume.getWorkexperience()+"','"+resume.getEmail()+"','"+resume.getPhone()+"','"+resume.getHappy()+"','"+resume.getEducation()+"','"+resume.getAdvantage()+"','"+resume.getJobintension()+"','"+resume.getJobaddr()+"','"+resume.getHonor()+"');");
@@ -238,37 +234,6 @@ public class ResumeDao {
 	}
 	
 	
-	public String getSql() {
-		return sql;
-	}
-
-	public void setSql(String sql) {
-		this.sql = sql;
-	}
-
-	public Connection getConnection() {
-		return connection;
-	}
-
-	public void setConnection(Connection connection) {
-		this.connection = connection;
-	}
-
-	public Statement getStat() {
-		return stat;
-	}
-
-	public void setStat(Statement stat) {
-		this.stat = stat;
-	}
-
-	public PreparedStatement getPstat() {
-		return pstat;
-	}
-
-	public void setPstat(PreparedStatement pstat) {
-		this.pstat = pstat;
-	}
 	
 	
 }

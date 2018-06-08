@@ -8,15 +8,10 @@ import dao.ResumeDao;
 import tools.DbUtil;
 
 public class ResumeService {
-	Connection connection;
-	ResumeDao resumeDao;
+	ResumeDao resumeDao=new ResumeDao();
 
 	
-	public ResumeService(){
-		connection = DbUtil.getInstance().getConnection();
-		resumeDao = new ResumeDao();
-		resumeDao.setConnection(connection);
-	}
+
 
 	public List<Resume> queryAll(){
 		return resumeDao.queryAll();

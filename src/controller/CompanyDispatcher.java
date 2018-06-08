@@ -29,6 +29,8 @@ public class CompanyDispatcher extends HttpServlet {
 		String url= request.getRequestURI();
 		String myUrl = url.substring(url.lastIndexOf("/")+1);
 		
+		request.setCharacterEncoding("utf-8");
+		
 		switch(myUrl) {
 		case "list":
 			traget = controller.list(request);

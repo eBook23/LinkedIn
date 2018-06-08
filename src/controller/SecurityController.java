@@ -10,7 +10,7 @@ import bean.User;
 import service.UserService;
 
 public class SecurityController {
-	UserService userService=new UserService();
+	private UserService userService=new UserService();
 	
 	public String login(HttpServletRequest req){
 		String username=req.getParameter("username");

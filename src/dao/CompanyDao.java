@@ -11,11 +11,7 @@ import java.util.List;
 import bean.Company;
 import bean.Post;
 
-public class CompanyDao {
-	private String sql;
-	private Connection connection;
-	private Statement stat;
-	private PreparedStatement pstat;
+public class CompanyDao extends CommonDao{
 	
 	public void save(Company company){
 		this.setSql("insert into company values('"+company.getUUID()+"','"+company.getCname()+"','"+company.getManager()+"','"+company.getPosition()+"','"+company.getPhone()+"','"+company.getTime()+"',"+company.getCountpeople()+");");
@@ -93,7 +89,7 @@ public class CompanyDao {
 			
 		}
 		
-		return null;
+		return list;
 	}
 
 	public List<Company> getByName(String cname){
@@ -145,38 +141,6 @@ public class CompanyDao {
 	}
 	
 	
-	
-	public String getSql() {
-		return sql;
-	}
-
-	public void setSql(String sql) {
-		this.sql = sql;
-	}
-
-	public Connection getConnection() {
-		return connection;
-	}
-
-	public void setConnection(Connection connection) {
-		this.connection = connection;
-	}
-
-	public Statement getStat() {
-		return stat;
-	}
-
-	public void setStat(Statement stat) {
-		this.stat = stat;
-	}
-
-	public PreparedStatement getPstat() {
-		return pstat;
-	}
-
-	public void setPstat(PreparedStatement pstat) {
-		this.pstat = pstat;
-	}
 	
 	
 }

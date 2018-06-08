@@ -10,15 +10,9 @@ import dao.User_PostDao;
 import tools.DbUtil;
 
 public class User_PostService {
-	Connection connection;
-	User_PostDao upDao;
+	User_PostDao upDao=new User_PostDao();
 
-	
-	public User_PostService(){
-		connection = DbUtil.getInstance().getConnection();
-		upDao = new User_PostDao();
-		upDao.setConnection(connection);
-	}
+
 
 	public List<User_post> queryAll(){
 		return upDao.queryAll();

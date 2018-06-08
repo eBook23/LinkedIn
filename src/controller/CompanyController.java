@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,11 +10,13 @@ import bean.User;
 import service.CompanyService;
 
 public class CompanyController {
+	
 	CompanyService companyService = new CompanyService();
 	
-	public Company getCompany(HttpServletRequest request) {
+	public Company getCompany(HttpServletRequest request) throws UnsupportedEncodingException{  
+
 		Company company = new Company();
-		company.setCname(request.getParameter("cname"));
+		company.setCname(new String(request.getParameter("cname").getBytes("iso-8859-1"),"UTF-8"));
 		company.setManager(request.getParameter("manager"));
 		company.setPosition(request.getParameter("position"));
 		company.setPhone(request.getParameter("phone"));
@@ -25,7 +28,6 @@ public class CompanyController {
 	
 	public String listByName(HttpServletRequest request) {
 		request.setAttribute("companys",this.companyService.getByName(request.getParameter("cname")));
-		System.out.println(this.companyService.getByName(request.getParameter("cname")));
 		return "/WEB-INF/content/admin/company/company-list.jsp";
 	}
 	
@@ -36,7 +38,7 @@ public class CompanyController {
 	public String toadd(HttpServletRequest request) {
 		return "/WEB-INF/content/admin/company/company-add.jsp";
 	}
-	public String add(HttpServletRequest request) {
+	public String add(HttpServletRequest request) throws UnsupportedEncodingException{
 		companyService.add(getCompany(request));
 		return "list";
 	}	
@@ -54,7 +56,7 @@ public class CompanyController {
 		return "/WEB-INF/content/admin/company/company-edit.jsp";
 	}	
 
-	public String update(HttpServletRequest request) {
+	public String update(HttpServletRequest request) throws UnsupportedEncodingException{
 		Company company = this.getCompany(request);
 		companyService.update(company); 
 		return "list";

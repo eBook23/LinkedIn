@@ -81,7 +81,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           	</tr>
           </c:forEach>
         </tbody>
-      </table>
+      </table><br/>
+      <center><a href="User/ulist"><button class="layui-btn"><i class="layui-icon"></i>返回</button></a></center>
       <div class="page">
         <div>
           <a class="prev" href="">&lt;&lt;</a>

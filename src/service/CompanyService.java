@@ -8,15 +8,10 @@ import dao.CompanyDao;
 import tools.DbUtil;
 
 public class CompanyService {
-	Connection connection;
-	CompanyDao companyDao;
+	CompanyDao companyDao=new CompanyDao();
 
 	
-	public CompanyService(){
-		connection = DbUtil.getInstance().getConnection();
-		companyDao = new CompanyDao();
-		companyDao.setConnection(connection);
-	}
+
 
 	public List<Company> queryAll(){
 		return companyDao.queryAll();

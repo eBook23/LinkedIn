@@ -11,11 +11,7 @@ import java.util.List;
 import bean.Post;
 
 
-public class PostDao {
-	private String sql;
-	private Connection connection;
-	private Statement stat;
-	private PreparedStatement pstat;
+public class PostDao extends CommonDao{
 	
 	public void save(Post post){
 		this.setSql("insert into post values('"+post.getUUID()+"','"+post.getName()+"');");
@@ -178,38 +174,6 @@ public class PostDao {
 		}
 	}
 	
-	
-	public String getSql() {
-		return sql;
-	}
-
-	public void setSql(String sql) {
-		this.sql = sql;
-	}
-
-	public Connection getConnection() {
-		return connection;
-	}
-
-	public void setConnection(Connection connection) {
-		this.connection = connection;
-	}
-
-	public Statement getStat() {
-		return stat;
-	}
-
-	public void setStat(Statement stat) {
-		this.stat = stat;
-	}
-
-	public PreparedStatement getPstat() {
-		return pstat;
-	}
-
-	public void setPstat(PreparedStatement pstat) {
-		this.pstat = pstat;
-	}
 	
 	
 }

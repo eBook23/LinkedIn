@@ -24,63 +24,53 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </head>
 <body>
-    <!-- é¡¶é¨å¼å§ -->
     <div class="container">
-        <div class="logo"><a href="/LinkedIn/Security/index">æè¿ç´è</a></div>
+        <div class="logo"><a href="/LinkedIn/Security/index">易迅直聘</a></div>
         <div class="left_open">
-            <i title="å±å¼å·¦ä¾§æ " class="iconfont">&#xe699;</i>
+            <i title="展开左侧栏" class="iconfont">&#xe699;</i>
         </div>
         <ul class="layui-nav right" lay-filter="">
           <li class="layui-nav-item">
             <a href="javascript:;">admin</a>
-            <dl class="layui-nav-child"> <!-- äºçº§èå -->
-              <dd><a onclick="x_admin_show('ä¸ªäººä¿¡æ¯','http://www.baidu.com')">ä¸ªäººä¿¡æ¯</a></dd>
-              <dd><a onclick="x_admin_show('åæ¢å¸å·','http://www.baidu.com')">åæ¢å¸å·</a></dd>
-              <dd><a href="/LinkedIn/Security/logout">éåº</a></dd>
+            <dl class="layui-nav-child"> <!-- 二级菜单 -->
+              <dd><a onclick="x_admin_show('个人信息','http://www.baidu.com')">个人信息</a></dd>
+              <dd><a onclick="x_admin_show('切换帐号','http://www.baidu.com')">切换帐号</a></dd>
+              <dd><a href="/LinkedIn/Security/logout">退出</a></dd>
             </dl>
           </li>
-          <li class="layui-nav-item to-index"><a href="/">åå°é¦é¡µ</a></li>
+          <li class="layui-nav-item to-index"><a href="/">前台首页</a></li>
         </ul>
         
     </div>
-    <!-- é¡¶é¨ç»æ -->
-    <!-- ä¸­é¨å¼å§ -->
-     <!-- å·¦ä¾§èåå¼å§ -->
     <div class="left-nav">
       <div id="side-nav">
         <ul id="nav">
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe6b8;</i>
-                    <cite>ç¨æ·ç®¡ç</cite>
+                    <cite>用户管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
                     <li>
                         <a _href="User/list">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>ç¨æ·åè¡¨</cite>
+                            <cite>用户列表</cite>
                         </a>
                     </li >
-                    <li>
-                        <a _href="member-del.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>ç¨æ·å é¤</cite>
-                        </a>
-                    </li>
                 </ul>
             </li>
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe723;</i>
-                    <cite>å¬å¸ç®¡ç</cite>
+                    <cite>公司管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
                     <li>
                         <a _href="Company/list">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>å¬å¸åè¡¨</cite>
+                            <cite>公司列表</cite>
                         </a>
                     </li >
                 </ul>
@@ -88,47 +78,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe726;</i>
-                    <cite>ç®åç®¡ç</cite>
+                    <cite>简历管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
                     <li>
                         <a _href="User/ulist">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>ç¨æ·åè¡¨</cite>
+                            <cite>用户列表</cite>
                         </a>
                     </li >
-                    <li>
-                        <a _href="admin-role.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>ç®åæ·»å </cite>
-                        </a>
-                    </li >
-                    <li>
-                        <a _href="admin-cate.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>ç®åä¿®æ¹</cite>
-                        </a>
-                    </li >
-                    <li>
-                        <a _href="admin-rule.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>ç®åå é¤</cite>
-                        </a>
-                    </li >
+                   
                 </ul>
             </li>
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe6ce;</i>
-                    <cite>èä½ç®¡ç</cite>
+                    <cite>职位管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
                     <li>
                         <a _href="Post/list">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>èä½åè¡¨</cite>
+                            <cite>职位列表</cite>
                         </a>
                     </li >
                 </ul>
@@ -136,13 +109,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </ul>
       </div>
     </div>
-    <!-- <div class="x-slide_left"></div> -->
-    <!-- å·¦ä¾§èåç»æ -->
-    <!-- å³ä¾§ä¸»ä½å¼å§ -->
     <div class="page-content">
         <div class="layui-tab tab" lay-filter="xbs_tab" lay-allowclose="false">
           <ul class="layui-tab-title">
-            <li>æçæ¡é¢</li>
+            <li>我的桌面</li>
           </ul>
           <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
@@ -152,15 +122,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
     </div>
     <div class="page-content-bg"></div>
-    <!-- å³ä¾§ä¸»ä½ç»æ -->
-    <!-- ä¸­é¨ç»æ -->
-    <!-- åºé¨å¼å§ -->
     <div class="footer">
         <div class="copyright">Copyright Â©2017 x-admin v2.3 All Rights Reserved</div>  
     </div>
     <!-- åºé¨ç»æ -->
-    <script>
-    //ç¾åº¦ç»è®¡å¯å»æ
+    <script>
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
